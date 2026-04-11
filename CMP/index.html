@@ -1,0 +1,475 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMP: Robust Whole-Body Tracking for Loco-Manipulation via Competence Manifold Projection</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- MathJax for rendering math formulas -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        .authors {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+        .authors a {
+            color: #2563eb;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .authors sup {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+        .authors a:hover {
+            text-decoration: underline;
+        }
+        .affiliations {
+            font-size: 1.15rem;
+            color: #4b5563;
+            margin-bottom: 30px;
+        }
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 24px;
+            background-color: #1f2937;
+            color: white;
+            text-decoration: none;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+        .link-btn:hover {
+            background-color: #374151;
+            transform: translateY(-1px);
+        }
+        .link-btn svg {
+            margin-right: 8px;
+            fill: currentColor;
+            width: 20px;
+            height: 20px;
+        }
+        section {
+            margin-bottom: 80px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .section-wide {
+            max-width: 100%;
+        }
+        h2 {
+            font-size: 2rem;
+            color: #111827;
+            margin-top: 0;
+            margin-bottom: 24px;
+            text-align: center;
+            font-weight: 700;
+        }
+        p {
+            font-size: 1.125rem;
+            text-align: justify;
+            line-height: 1.7;
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+        .video-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            background: #f3f4f6;
+        }
+        video {
+            width: 100%;
+            display: block;
+        }
+        .img-fluid {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .img-fluid-small {
+            width: 80%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .caption {
+            font-size: 1rem;
+            color: #6b7280;
+            text-align: justify;
+            line-height: 1.6;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            background-color: white;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 16px 12px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+            white-space: nowrap;
+        }
+        th {
+            background-color: #f9fafb;
+            color: #374151;
+            font-weight: 600;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .method-col {
+            text-align: left;
+            font-weight: 600;
+            color: #111827;
+        }
+        .table-subheader {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-weight: 500;
+            background-color: #f9fafb;
+        }
+        .bibtex-code {
+            background-color: #f8fafc;
+            color: #334155;
+            padding: 24px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.95rem;
+            border: 1px solid #e2e8f0;
+            display: block;
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .teaser-video-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+        .teaser-video-container video {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 768px) {
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="55924cf6-b27a-4d31-bd56-b4c29e3b97ac"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span style="color: #86D549">C</span><span style="color: #668FF4">M</span><span style="color: #F1416B">P</span>: Robust Whole-Body Tracking for Loco-Manipulation via Competence Manifold Projection</h1>
+            <div class="authors">
+                <a href="https://scholar.google.com/citations?user=yQs5aQwAAAAJ">Ziyang Cheng</a>, 
+                <a href="#">Haoyu Wei</a>, 
+                <a href="https://scholar.google.com/citations?user=taDXsj8AAAAJ">Hang Yin</a>, 
+                <a href="https://scholar.google.com/citations?user=4G627acAAAAJ">Xiuwei Xu</a>, 
+                <a href="https://scholar.google.com/citations?user=FjDO83UAAAAJ">Bingyao Yu</a>, 
+                <a href="https://scholar.google.com/citations?user=6a79aPwAAAAJ">Jie Zhou</a>, 
+                <a href="https://scholar.google.com/citations?user=TN8uDQoAAAAJ" target="_blank">Jiwen Lu</a>
+            </div>
+            <div class="affiliations">
+                Tsinghua University
+            </div>
+            <div class="links">
+                <a href="https://arxiv.org/pdf/2604.07457" class="link-btn">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    Paper
+                </a>
+                <a href="https://arxiv.org/abs/2604.07457" class="link-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72l5 2.73 5-2.73v3.72z"/></svg>
+                    arXiv
+                </a>
+                <a href="https://shepherd1226.github.io/CMP/" class="link-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.154-1.11-1.462-1.11-1.462-.908-.621.069-.608.069-.608 1.004.07 1.532 1.031 1.532 1.031.891 1.528 2.338 1.087 2.909.831.091-.645.348-1.087.634-1.337-2.22-.252-4.555-1.111-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .839-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.025 2.747-1.025.546 1.378.203 2.395.1 2.647.641.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                    Code (Coming Soon)
+                </a>
+            </div>
+        </header>
+
+        <div class="teaser-video-container">
+            <video controls autoplay loop muted playsinline style="max-width: 900px; width: 100%;">
+                <source src="Static/web_optimized.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <section id="abstract">
+            <h2>Abstract</h2>
+            <img src="Static/teaser.webp" alt="Robust Whole-Body Tracking via CMP" class="img-fluid">
+            <p>
+                While decoupled control schemes for legged mobile manipulators have shown robustness, learning holistic whole-body control policies for tracking global end-effector poses remains fragile against Out-of-Distribution (OOD) inputs induced by sensor noise or infeasible user commands. To improve robustness against these perturbations without sacrificing task performance and continuity, we propose <strong>Competence Manifold Projection (CMP)</strong>. 
+            </p>
+            <p>
+                Specifically, we utilize a <em>Frame-Wise Safety Scheme</em> that transforms the infinite-horizon safety constraint into a computationally efficient single-step manifold inclusion. To instantiate this competence manifold, we employ a <em>Lower-Bounded Safety Estimator</em> that distinguishes unmastered intentions from the training distribution. We then introduce an <em>Isomorphic Latent Space (ILS)</em> that aligns manifold geometry with safety probability, enabling efficient $\mathcal{O}(1)$ seamless defense against arbitrary OOD intents. 
+            </p>
+            <p>
+                Experiments demonstrate that CMP achieves up to a <strong>10-fold survival rate improvement</strong> in typical OOD scenarios where baselines suffer catastrophic failure, incurring under 10% tracking degradation. Notably, the system exhibits emergent "best-effort" generalization behaviors to progressively accomplish OOD goals by adhering to the competence boundaries.
+            </p>
+        </section>
+
+        <section id="pipeline" style="max-width: 1050px;">
+            <h2>Method Overview</h2>
+            <img src="Static/pipeline.webp" alt="Overview of the pipeline" class="img-fluid" style="width: 100%; height: auto; margin: 0 auto; display: block;">
+            <p class="caption" style="text-align: center;">
+                <strong>Pipeline of Competence Manifold Projection.</strong> Target trajectories relative to the current Tool Center Point (TCP) frame are encoded into a raw latent intention $z_t^{raw}$ by an Intent Encoder $\phi$ for execution by the Low-level Policy $\pi$. A Safety Estimator $\omega$ is concurrently trained via Temporal Difference (TD) targets to assess safety. To streamline inference, the Isomorphic Latent Space (ILS) aligns safety contours to be spherical, with safety decreasing radially. This permits $\mathcal{O}(1)$ safety enforcement by simply truncating latent vectors that exceed the safety radius.
+            </p>
+        </section>
+
+        <section id="method-progression">
+            <h2>Core Formulation</h2>
+            <p>
+                The primary challenge of imposing safety on dynamic legged systems is the dependence on infinite-horizon future states. CMP simplifies this into a unified projection step.
+            </p>
+            <img src="Static/method_progression.webp" alt="Evolution of the safety formulation" class="img-fluid" style="max-width: 600px; margin: 0 auto; display: block;">
+            <p class="caption" style="text-align: center;">
+                <strong>(a)</strong> The original safety problem depends on future horizons. <strong>(b)</strong> We reduce it to a single-step latent inclusion check. <strong>(c)</strong> Utilizing ILS, we enforce an isomorphism between safety probability and geometric radius, creating a spherical boundary for easy $\mathcal{O}(1)$ projection.
+            </p>
+        </section>
+
+        <section id="real-experiments-1" class="section-wide">
+            <h2>Robustness to Out-of-Distribution Targets</h2>
+            <p>
+                A core advantage of CMP is its ability to handle infeasible, out-of-distribution commands gracefully without crashing, instead of failing catastrophically like standard models.
+            </p>
+            <img src="Static/real_experiment_1.webp" alt="Robustness to OOD Commands" class="img-fluid">
+            <p class="caption">
+                <strong>Visual comparison of hardware trials.</strong> The color bars denote the outcome: green for task success, blue for safe survival ("best-effort" execution despite lower accuracy), and red for catastrophic failure. While the baseline (UMI-on-Legs) succeeds in In-Distribution (ID) tasks, it suffers severe failures in OOD scenarios. In contrast, CMP safely handles arbitrary commands by generalizing to moderate OOD tasks and surviving extreme ones gracefully.
+            </p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th rowspan="2" class="method-col" style="border-right: 1px solid #e2e8f0; vertical-align: bottom;">Method</th>
+                            <th colspan="3" style="border-right: 1px solid #e2e8f0;">ID (5 tasks &times; 3 trials)</th>
+                            <th colspan="3" style="border-right: 1px solid #e2e8f0;">Moderate OOD (5 tasks &times; 3 trials)</th>
+                            <th colspan="3" style="border-right: 1px solid #e2e8f0;">Extreme OOD (5 tasks &times; 3 trials)</th>
+                            <th rowspan="2" class="table-subheader" style="vertical-align: bottom;">Latency (ms) &darr;</th>
+                        </tr>
+                        <tr>
+                            <th class="table-subheader">SR (%) &uarr;</th>
+                            <th class="table-subheader">$e_p$ (cm) &darr;</th>
+                            <th class="table-subheader" style="border-right: 1px solid #e2e8f0;">$e_r$ (rad) &darr;</th>
+                            <th class="table-subheader">SR (%) &uarr;</th>
+                            <th class="table-subheader">$e_p$ (cm) &darr;</th>
+                            <th class="table-subheader" style="border-right: 1px solid #e2e8f0;">$e_r$ (rad) &darr;</th>
+                            <th class="table-subheader">SR (%) &uarr;</th>
+                            <th class="table-subheader">$e_p$ (cm) &darr;</th>
+                            <th class="table-subheader" style="border-right: 1px solid #e2e8f0;">$e_r$ (rad) &darr;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="method-col" style="border-right: 1px solid #e2e8f0;">UMI-on-Legs</td>
+                            <td>80.0</td><td><strong>4.9 &plusmn; 1.6</strong></td><td style="border-right: 1px solid #e2e8f0;"><strong>0.07 &plusmn; 0.02</strong></td>
+                            <td>0.0</td><td>-</td><td style="border-right: 1px solid #e2e8f0;">-</td>
+                            <td>0.0</td><td>-</td><td style="border-right: 1px solid #e2e8f0;">-</td>
+                            <td><strong>2.97 &plusmn; 0.15</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="method-col" style="border-right: 1px solid #e2e8f0;">Latent Shielding</td>
+                            <td>73.3</td><td>6.9 &plusmn; 4.3</td><td style="border-right: 1px solid #e2e8f0;">0.09 &plusmn; 0.03</td>
+                            <td>33.3</td><td><strong>7.8 &plusmn; 6.6</strong></td><td style="border-right: 1px solid #e2e8f0;"><strong>0.16 &plusmn; 0.11</strong></td>
+                            <td>20.0</td><td>-</td><td style="border-right: 1px solid #e2e8f0;">-</td>
+                            <td>3.89 &plusmn; 0.49</td>
+                        </tr>
+                        <tr>
+                            <td class="method-col" style="border-right: 1px solid #e2e8f0;">Neural CBF</td>
+                            <td>80.0</td><td><strong>4.8 &plusmn; 1.9</strong></td><td style="border-right: 1px solid #e2e8f0;">0.09 &plusmn; 0.03</td>
+                            <td>60.0</td><td><strong>7.0 &plusmn; 4.3</strong></td><td style="border-right: 1px solid #e2e8f0;"><strong>0.17 &plusmn; 0.11</strong></td>
+                            <td>40.0</td><td><strong>19.3 &plusmn; 11.9</strong></td><td style="border-right: 1px solid #e2e8f0;"><strong>0.24 &plusmn; 0.27</strong></td>
+                            <td>5.36 &plusmn; 0.54</td>
+                        </tr>
+                        <tr style="background-color: #f1f8ff;">
+                            <td class="method-col" style="border-right: 1px solid #e2e8f0;"><strong>CMP (Ours)</strong></td>
+                            <td><strong>100.0</strong></td><td><strong>5.1 &plusmn; 1.8</strong></td><td style="border-right: 1px solid #e2e8f0;">0.09 &plusmn; 0.03</td>
+                            <td><strong>93.3</strong></td><td><strong>9.6 &plusmn; 7.2</strong></td><td style="border-right: 1px solid #e2e8f0;"><strong>0.24 &plusmn; 0.10</strong></td>
+                            <td><strong>86.7</strong></td><td><strong>19.2 &plusmn; 11.1</strong></td><td style="border-right: 1px solid #e2e8f0;">0.87 &plusmn; 0.68</td>
+                            <td><strong>2.99 &plusmn; 0.14</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="caption">
+                <strong>Quantitative evaluation on physical hardware.</strong> We evaluate system performance across 15 target trajectories categorized by difficulty, with 3 trials for each task. CMP is the only method achieving a 100% <strong>Survival Rate (SR)</strong> across ID tasks, and maintains an <strong>86.7% survival rate</strong> even under Extreme OOD commands where all baselines struggle heavily. It exhibits safe "best-effort" behaviors while maintaining an ultra-low inference latency of just ~3 ms.
+            </p>
+        </section>
+
+        <section id="analysis">
+            <h2>In-depth Analysis</h2>
+            
+            <div class="grid-2col">
+                <div>
+                    <h3>1. Defense Against Sensor-induced Divergence</h3>
+                    <p>
+                        Sensor noise (like VIO drift) can easily lead a conventional policy into a positive feedback loop of failure. CMP actively interrupts this cycle.
+                    </p>
+                    <img src="Static/real_experiment_2.webp" alt="Defense against sensor-induced divergence" class="img-fluid">
+                    <p class="caption">
+                        <strong>(Top)</strong> Without CMP, minor VIO error causes an unexpected input, leading to aggressive motion, which further exacerbates VIO error until the robot crashes. <strong>(Bottom)</strong> CMP truncates the unexpected inputs, effectively blocking the hazardous feedback loop and preserving stability.
+                    </p>
+                </div>
+                <div>
+                    <h3>2. Ablation & Trade-off</h3>
+                    <div class="table-container" style="margin-top: 0; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; border-radius: 8px;">
+                        <table style="font-size: 0.85rem;">
+                            <thead>
+                                <tr>
+                                    <th style="padding: 8px;">Method</th>
+                                    <th style="padding: 8px;">Frame-Wise</th>
+                                    <th style="padding: 8px;">Estimator</th>
+                                    <th style="padding: 8px;">ILS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="method-col" style="padding: 8px; font-weight: normal;">UMI-on-Legs</td><td style="padding: 8px;">&times;</td><td style="padding: 8px;">&times;</td><td style="padding: 8px;">&times;</td>
+                                </tr>
+                                <tr>
+                                    <td class="method-col" style="padding: 8px; font-weight: normal;">CVAE</td><td style="padding: 8px;">&check;</td><td style="padding: 8px;">&times;</td><td style="padding: 8px;">&times;</td>
+                                </tr>
+                                <tr>
+                                    <td class="method-col" style="padding: 8px; font-weight: normal;">SCVAE</td><td style="padding: 8px;">&check;</td><td style="padding: 8px;">&check;</td><td style="padding: 8px;">&times;</td>
+                                </tr>
+                                <tr style="background-color: #f1f8ff;">
+                                    <td class="method-col" style="padding: 8px;"><strong>CMP (Ours)</strong></td><td style="padding: 8px;"><strong>&check;</strong></td><td style="padding: 8px;"><strong>&check;</strong></td><td style="padding: 8px;"><strong>&check;</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <img src="Static/fig_error_vs_safety.webp" alt="Trade-off between Accuracy and Safety" class="img-fluid">
+                    <p class="caption">
+                        We sweep the safety radius $R_{safe}$ to examine the trade-off curve between ID position error in logarithmic axis and OOD-Geometry survival rate. CMP achieves a superior trade-off curve by correlating safety with the latent geometry through ILS.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid-2col">
+                <div>
+                    <h3>3. Validation of the Safety Estimator</h3>
+                    <img src="Static/sim_safety_estimator.webp" alt="Validation of the Safety Estimator" class="img-fluid">
+                    <p class="caption">
+                        <strong>Top:</strong> Snapshots of the robot executing a raw OOD sideways push command without latent projection. <strong>Bottom:</strong> Time-series of Safety metric $W$ of the safest intention, raw input intention and the projected intention.
+                    </p>
+                </div>
+                <div>
+                    <h3>4. Isomorphic Latent Space (ILS)</h3>
+                    <img src="Static/ours_latent_sphere.webp" alt="Visualization of Isomorphic Latent Space" class="img-fluid">
+                    <p class="caption">
+                        Our ILS mechanism effectively reshapes intents into a statistical spherical boundary, allowing $\mathcal{O}(1)$ constraint enforcement via simple vector truncation. Let's see the safety boundaries effectively being shaped as a hypersphere.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="bibtex">
+            <h2>BibTeX</h2>
+            <pre class="bibtex-code"><code>@article{cheng2026cmp,
+  title={CMP: Robust Whole-Body Tracking for Loco-Manipulation via Competence Manifold Projection},
+  author={Cheng, Ziyang and Wei, Haoyu and Yin, Hang and Xu, Xiuwei and Yu, Bingyao and Zhou, Jie and Lu, Jiwen},
+  journal={arXiv preprint arXiv:2604.07457},
+  year={2026}
+}</code></pre>
+        </section>
+
+        <!-- 
+          delete style="display: none;" to show the page view count on the frontend.
+        -->
+        <footer style="text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.95rem;">
+            <span id="busuanzi_container_site_pv" style="display: none;">
+                Page Views: <span id="busuanzi_value_site_pv" style="font-weight: 600; color: #374151;"></span>
+            </span>
+        </footer>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    </div>
+</body>
+</html>
