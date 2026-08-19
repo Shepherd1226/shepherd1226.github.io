@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="GigaBrain-WBC-0.5 is a Behavior World Model for robust whole-body control with environment interaction."
+    >
+    <title>GigaBrain-WBC-0.5</title>
+    <link rel="stylesheet" href="assets/css/site.css">
+    <script src="assets/js/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="wordmark" href="#top" aria-label="GigaBrain-WBC-0.5 home">
+          <span class="wordmark-mark" aria-hidden="true">G</span>
+          <span>GigaBrain-WBC-0.5</span>
+        </a>
+        <nav class="site-nav" aria-label="Page sections">
+          <a href="#demos">Demos</a>
+          <a href="#results">Results</a>
+          <a href="#method">Method</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell">
+        <h1>
+          <span>GigaBrain-WBC-0.5</span>
+          A Behavior World Model for Robust Whole-Body Control with Environment Interaction
+        </h1>
+        <p class="authors">
+          Ziyang Cheng<sup>1,2</sup> <span aria-hidden="true">&middot;</span>
+          Tianshu Tang<sup>1,2</sup> <span aria-hidden="true">&middot;</span>
+          Jinxin Lan<sup>1,2</sup> <span aria-hidden="true">&middot;</span>
+          Xinze Chen<sup>2</sup> <span aria-hidden="true">&middot;</span>
+          Yuhan Gong<sup>2</sup> <span aria-hidden="true">&middot;</span>
+          Zhichao Liu<sup>2</sup> <span aria-hidden="true">&middot;</span>
+          Changzhong Wu<sup>2</sup> <span aria-hidden="true">&middot;</span>
+          Yahao Mao<sup>2,3</sup> <span aria-hidden="true">&middot;</span>
+          Zongyan Deng<sup>2,4</sup> <span aria-hidden="true">&middot;</span>
+          Mingxuan Ma<sup>2,4</sup> <span aria-hidden="true">&middot;</span>
+          Huasen Xi<sup>2,5,6</sup> <span aria-hidden="true">&middot;</span>
+          Yilong Liu<sup>1,2</sup> <span aria-hidden="true">&middot;</span>
+          Yutong Wu<sup>2</sup> <span aria-hidden="true">&middot;</span>
+          Xiaofeng Wang<sup>2</sup> <span aria-hidden="true">&middot;</span>
+          Yang Wang<sup>2</sup> <span aria-hidden="true">&middot;</span>
+          Yun Ye<sup>2</sup> <span aria-hidden="true">&middot;</span>
+          Guan Huang<sup>2</sup> <span aria-hidden="true">&middot;</span>
+          Xiaojie Jin<sup>4</sup> <span aria-hidden="true">&middot;</span>
+          Zheng Zhu<sup>2,#</sup> <span aria-hidden="true">&middot;</span>
+          Jiwen Lu<sup>1,#</sup>
+        </p>
+        <p class="institutions">
+          <sup>1</sup>Tsinghua University <span aria-hidden="true">&middot;</span>
+          <sup>2</sup>GigaAI <span aria-hidden="true">&middot;</span>
+          <sup>3</sup>University of Shanghai for Science and Technology <span aria-hidden="true">&middot;</span>
+          <sup>4</sup>Beijing Jiaotong University <span aria-hidden="true">&middot;</span>
+          <sup>5</sup>Institute of Automation, Chinese Academy of Sciences <span aria-hidden="true">&middot;</span>
+          <sup>6</sup>University of Chinese Academy of Sciences <span aria-hidden="true">&middot;</span>
+          <sup>#</sup>Corresponding authors
+        </p>
+        <div class="resource-links" aria-label="Project resources">
+          <a class="resource-link" href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg>
+            <span>Paper</span>
+          </a>
+          <a class="resource-link" href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.28-.36 6.72-1.61 6.72-7A5.4 5.4 0 0 0 19.3 3.75 5.07 5.07 0 0 0 19.16 0S18 0 15 1.48a13.38 13.38 0 0 0-7 0C5 0 3.84 0 3.84 0a5.07 5.07 0 0 0-.14 3.75A5.4 5.4 0 0 0 2.28 7.5c0 5.42 3.44 6.67 6.72 7A4.8 4.8 0 0 0 8 18v4"></path><path d="M8 19c-3 .92-3-1.5-4-2"></path></svg>
+            <span>Code</span><small>coming soon</small>
+          </a>
+          <a class="resource-link" href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg>
+            <span>Videos</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section-shell hero-demo" aria-labelledby="full-demo-title">
+        <div class="section-heading compact-heading">
+          <p class="eyebrow">Full system</p>
+          <h2 id="full-demo-title">One policy. Real-time command. Real-world contact.</h2>
+        </div>
+        <div
+          class="media-frame media-frame-hero"
+          data-video="assets/videos/full-demo.mp4"
+          data-label="Full demo"
+        >
+          <div class="media-placeholder">
+            <span class="media-index">00</span>
+            <div>
+              <strong>Full demo</strong>
+              <span>Real-robot footage forthcoming</span>
+            </div>
+          </div>
+        </div>
+        <p class="lead">
+          GigaBrain-WBC-0.5 models what the robot can do next while it acts, enabling
+          environment interaction and extreme robustness in a single whole-body controller.
+        </p>
+      </section>
+
+      <section class="band band-soft" id="demos">
+        <div class="section-shell">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="eyebrow">Head-to-head</p>
+              <h2>Comparison with SONIC</h2>
+            </div>
+            <p>Matched hardware trials: SONIC is shown on the left and ours on the right, driven simultaneously by the same live command.</p>
+          </div>
+          <div class="media-grid media-grid-two">
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/sonic-payload.mp4" data-gif="assets/gifs/sonic-payload.gif" data-label="SONIC versus ours: lifting and holding a box">
+                <div class="media-placeholder"><span class="media-index">01</span><div><strong>Box lifting</strong><span>Object interaction</span></div></div>
+              </div>
+              <h3>Lifting a box</h3>
+              <p>Ours lifts and holds the box while SONIC loses a stable grasp.</p>
+            </article>
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/sonic-payload2.mp4" data-gif="assets/gifs/sonic-payload2.gif" data-label="SONIC versus ours: kneel-to-stand with a 2 kg fire extinguisher">
+                <div class="media-placeholder"><span class="media-index">02</span><div><strong>Fire extinguisher</strong><span>Object interaction</span></div></div>
+              </div>
+              <h3>Kneel-to-stand with payload</h3>
+              <p>Ours rises while holding a 2 kg fire extinguisher; SONIC falls during the ascent.</p>
+            </article>
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/sonic-terrain.mp4" data-gif="assets/gifs/sonic-terrain.gif" data-label="SONIC versus ours: stepping onto a platform">
+                <div class="media-placeholder"><span class="media-index">03</span><div><strong>Step onto platform</strong><span>Terrain interaction</span></div></div>
+              </div>
+              <h3>Stepping onto a platform</h3>
+              <p>Ours climbs onto the platform and stabilizes; SONIC fails to complete the ascent.</p>
+            </article>
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/sonic-terrain2.mp4" data-gif="assets/gifs/sonic-terrain2.gif" data-label="SONIC versus ours: sitting on a box support">
+                <div class="media-placeholder"><span class="media-index">04</span><div><strong>Sit on a box</strong><span>Terrain interaction</span></div></div>
+              </div>
+              <h3>Sitting on a support</h3>
+              <p>Ours loads the box as a seat; SONIC remains in a half-squat without stable support.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band" id="interaction">
+        <div class="section-shell">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="eyebrow">Capability 01</p>
+              <h2>Environment interaction</h2>
+            </div>
+            <p>The controller turns seats and platforms into load-bearing support while coordinating balance with carried objects.</p>
+          </div>
+          <div class="media-grid media-grid-three">
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/interaction-chair.mp4" data-gif="assets/gifs/interaction-chair.gif" data-label="Sitting on a real chair under live whole-body command">
+                <div class="media-placeholder"><span class="media-index">05</span><div><strong>Chair support</strong><span>Load-bearing contact</span></div></div>
+              </div>
+              <h3>Sitting on a chair</h3>
+              <p>The robot lowers onto a real chair and uses the seat as load-bearing support under live whole-body command.</p>
+            </article>
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/interaction-step.mp4" data-gif="assets/gifs/interaction-step.gif" data-label="Carrying a large black case onto a platform">
+                <div class="media-placeholder"><span class="media-index">06</span><div><strong>Case + platform</strong><span>Object and terrain interaction</span></div></div>
+              </div>
+              <h3>Carrying a case onto a platform</h3>
+              <p>While holding a large black case, the robot steps onto the platform and stabilizes without dropping it.</p>
+            </article>
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/interaction-payload.mp4" data-gif="assets/gifs/interaction-payload.gif" data-label="Carrying a cardboard box onto a platform">
+                <div class="media-placeholder"><span class="media-index">07</span><div><strong>Box + platform</strong><span>Payload and terrain interaction</span></div></div>
+              </div>
+              <h3>Carrying a box onto a platform</h3>
+              <p>The robot climbs while carrying a cardboard box, adapting its balance to both the payload and the platform contact.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band-ink" id="robustness">
+        <div class="section-shell">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="eyebrow">Capability 02</p>
+              <h2>Extreme robustness</h2>
+            </div>
+            <p>When the command under current environment is infeasible, the policy remains driveable.</p>
+          </div>
+          <div class="media-grid media-grid-two">
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/robust-chair-removed.mp4" data-gif="assets/gifs/robust-chair-removed.gif" data-label="Chair removed">
+                <div class="media-placeholder"><span class="media-index">08</span><div><strong>Chair removed</strong><span>Best-effort squat</span></div></div>
+              </div>
+              <h3>Missing support</h3>
+              <p>The same sitting command resolves to a stable squat.</p>
+            </article>
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/robust-step-removed.mp4" data-gif="assets/gifs/robust-step-removed.gif" data-label="Step removed">
+                <div class="media-placeholder"><span class="media-index">09</span><div><strong>Step removed</strong><span>Continuous task</span></div></div>
+              </div>
+              <h3>Changed terrain</h3>
+              <p>The robot keeps carrying instead of committing to a missing step.</p>
+            </article>
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/robust-disturbance.mp4" data-gif="assets/gifs/robust-disturbance.gif" data-label="Physical disturbance recovery">
+                <div class="media-placeholder"><span class="media-index">10</span><div><strong>Disturbance</strong><span>Push, trip, recover</span></div></div>
+              </div>
+              <h3>Physical disturbance</h3>
+              <p>Push and trip recovery within the tracking policy itself.</p>
+            </article>
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/robust-ood.mp4" data-gif="assets/gifs/robust-ood.gif" data-label="Out-of-distribution commands">
+                <div class="media-placeholder"><span class="media-index">11</span><div><strong>OOD command</strong><span>Closest feasible behavior</span></div></div>
+              </div>
+              <h3>Unsafe commands</h3>
+              <p>Infeasible intent is retracted to a continuous best-effort motion.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band" id="motion">
+        <div class="section-shell">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="eyebrow">Motion range</p>
+              <h2>High-difficulty motion</h2>
+            </div>
+            <p>One command interface across flexibility, control, and explosive dynamics.</p>
+          </div>
+          <div class="media-grid media-grid-three">
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/motion-high-kick.mp4" data-gif="assets/gifs/motion-high-kick.gif" data-label="High kick">
+                <div class="media-placeholder"><span class="media-index">12</span><div><strong>High kick</strong></div></div>
+              </div>
+              <h3>High kick</h3>
+            </article>
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/motion-tai-chi.mp4" data-gif="assets/gifs/motion-tai-chi.gif" data-label="Tai chi">
+                <div class="media-placeholder"><span class="media-index">13</span><div><strong>Tai chi</strong><span>Slow control</span></div></div>
+              </div>
+              <h3>Tai chi</h3>
+            </article>
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/motion-jump.mp4" data-gif="assets/gifs/motion-jump.gif" data-label="Jumping">
+                <div class="media-placeholder"><span class="media-index">14</span><div><strong>Jump</strong><span>Dynamic take-off</span></div></div>
+              </div>
+              <h3>Jumping</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band-soft" id="transfer">
+        <div class="section-shell">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="eyebrow">Embodiment</p>
+              <h2>Cross-robot transfer</h2>
+            </div>
+            <p>The same controller design transfers beyond a single humanoid body.</p>
+          </div>
+          <div class="media-grid media-grid-two">
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/transfer-g1.mp4" data-gif="assets/gifs/transfer-g1.gif" data-label="Unitree G1">
+                <div class="media-placeholder"><span class="media-index">15</span><div><strong>Unitree G1</strong><span>Source embodiment</span></div></div>
+              </div>
+              <h3>Unitree G1</h3>
+            </article>
+            <article class="media-item">
+              <div class="media-frame" data-video="assets/videos/transfer-l01.mp4" data-gif="assets/gifs/transfer-l01.gif" data-label="Maker L01">
+                <div class="media-placeholder"><span class="media-index">16</span><div><strong>Maker L01</strong><span>Transferred embodiment</span></div></div>
+              </div>
+              <h3>Maker L01</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band" id="results">
+        <div class="section-shell">
+          <div class="section-heading">
+            <p class="eyebrow">Positioning</p>
+            <h2>One policy closes the capability gap</h2>
+            <p>Prior methods cover pieces of the problem. GigaBrain-WBC-0.5 brings them together.</p>
+          </div>
+          <div class="table-scroll" tabindex="0" aria-label="Capability comparison table">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th scope="col">Method</th>
+                  <th scope="col">Diverse tracking</th>
+                  <th scope="col">Teleoperation</th>
+                  <th scope="col">Terrain interaction</th>
+                  <th scope="col">Object interaction</th>
+                  <th scope="col">OOD robust</th>
+                  <th scope="col">Fall robust</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">GMT</th><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="no">&#10005;</td></tr>
+                <tr><th scope="row">TWIST</th><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="no">&#10005;</td></tr>
+                <tr><th scope="row">SONIC</th><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="no">&#10005;</td></tr>
+                <tr><th scope="row">HoloMotion-1</th><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="no">&#10005;</td></tr>
+                <tr><th scope="row">Humanoid-GPT</th><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="no">&#10005;</td></tr>
+                <tr><th scope="row">SceneBot</th><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="no">&#10005;</td></tr>
+                <tr><th scope="row">CMP</th><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="no">&#10005;</td></tr>
+                <tr><th scope="row">BFM-Zero</th><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="yes">&#10003;</td></tr>
+                <tr class="ours"><th scope="row">GigaBrain-WBC-0.5</th><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band-results" id="main-results">
+        <div class="section-shell">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="eyebrow">Core results</p>
+              <h2>Strong across every regime</h2>
+            </div>
+            <p>Best values are highlighted. All results are sim-to-sim in MuJoCo.</p>
+          </div>
+          <div class="result-callouts" aria-label="Result highlights">
+            <div><strong>4.3&times;</strong><span>terrain survival over the strongest baseline</span></div>
+            <div><strong>83.1%</strong><span>survival under physically implausible commands</span></div>
+            <div><strong>99.3%</strong><span>recovery from fallen initializations</span></div>
+          </div>
+          <div class="table-scroll" tabindex="0" aria-label="Main experiment results">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th rowspan="2" scope="col">Method</th>
+                  <th colspan="3" scope="colgroup">Standard</th>
+                  <th colspan="3" scope="colgroup">Terrain</th>
+                  <th colspan="2" scope="colgroup">OOD</th>
+                  <th colspan="2" scope="colgroup">Fall</th>
+                </tr>
+                <tr>
+                  <th scope="col">MPKPE&#8595;</th><th scope="col">RootVel&#8595;</th><th scope="col">SR&#8593;</th>
+                  <th scope="col">MPKPE&#8595;</th><th scope="col">RootPos&#8595;</th><th scope="col">SR&#8593;</th>
+                  <th scope="col">MPKPE&#8595;</th><th scope="col">SR&#8593;</th>
+                  <th scope="col">SR&#8593;</th><th scope="col">Jerk&#8595;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">SONIC</th><td>82.3</td><td>189.6</td><td>94.1</td><td>331.2</td><td>294.7</td><td>15.3</td><td>327.6</td><td>50.0</td><td>5.9</td><td>1295.5</td></tr>
+                <tr><th scope="row">HoloMotion-1</th><td>109.4</td><td class="best-other">121.3</td><td>89.0</td><td>330.0</td><td>280.7</td><td>18.7</td><td>248.7</td><td>67.7</td><td>0.7</td><td>2000.0</td></tr>
+                <tr><th scope="row">Humanoid-GPT</th><td>90.9</td><td>205.8</td><td>91.9</td><td>283.3</td><td>326.7</td><td>14.0</td><td>208.0</td><td>70.6</td><td>2.9</td><td>3598.1</td></tr>
+                <tr class="ours"><th scope="row">Ours</th><td class="best">76.6</td><td>211.1</td><td class="best">96.3</td><td class="best">93.3</td><td class="best">100.7</td><td class="best">81.3</td><td class="best">158.0</td><td class="best">83.1</td><td class="best">99.3</td><td class="best">1050.6</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">
+            Errors are in mm except RootVel (mm/s) and Jerk (rad/s<sup>3</sup>); SR is percent.
+            Fall SR uses the recovery criterion described in the paper.
+          </p>
+        </div>
+      </section>
+
+      <section class="band band-soft" id="method">
+        <div class="section-shell">
+          <div class="section-heading">
+            <p class="eyebrow">Method overview</p>
+            <h2>A controller that models its own future behavior</h2>
+            <p>
+              A causal Transformer jointly predicts action, next proprioceptive state, and the
+              distribution of the next latent behavior command. The same prediction used to act
+              also defines what is feasible now.
+            </p>
+          </div>
+          <figure class="paper-figure">
+            <a href="assets/images/overview.png" target="_blank" rel="noopener">
+              <img src="assets/images/overview.png" width="6265" height="2734" alt="GigaBrain-WBC-0.5 behavior world model overview">
+            </a>
+            <figcaption>
+              The policy internalizes contact dynamics and behavior admissibility, then reuses its
+              predicted distribution for online best-effort command projection.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="band" id="terrain-pipeline">
+        <div class="section-shell">
+          <div class="section-heading">
+            <p class="eyebrow">Data pipeline</p>
+            <h2>From motion to spatial terrain</h2>
+            <p>
+              Contact evidence in retargeted motion is recovered as full 3D, simulator-ready
+              geometry: stairs, seats, boxes, tables, and other supports.
+            </p>
+          </div>
+          <figure class="paper-figure">
+            <a href="assets/images/terrain-pipeline.png" target="_blank" rel="noopener">
+              <img src="assets/images/terrain-pipeline.png" width="6330" height="1718" alt="Automatic spatial terrain annotation pipeline">
+            </a>
+            <figcaption>
+              Contact detection, whole-body penetration filtering, clustering, and primitive fitting
+              turn ordinary motion data into a terrain-paired training corpus.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="band" id="about">
+        <div class="section-shell narrow-shell">
+          <div class="section-heading">
+            <p class="eyebrow">Abstract</p>
+          </div>
+          <div class="abstract-copy">
+            <p>Whole-body motion tracking policies turn a humanoid into a robust control interface: the teleoperator&mdash;or an upstream model&mdash;only supplies a coarse movement intent, while the low-level policy keeps the robot balanced and physically feasible.</p>
+            <p>Existing trackers deliver this interface only on flat ground: trained in empty scenes, they never learn how contact with terrain and objects reshapes their dynamics, and they attempt to teach the policy to balance under any command by continually enlarging the reference-motion corpus, which stops working once feasible behaviors become environment-dependent.</p>
+            <p>We present GigaBrain-WBC-0.5, the first <em>Behavior World Model</em> (BWM) for humanoid whole-body control. Rather than a purely reactive tracker, we train a causal Transformer to jointly predict its next action, next state, and the distribution over its next latent behavior command, so the network that acts also models how the environment shapes what it can do next.</p>
+            <p>An automatic terrain-annotation pipeline recovers full 3D contact geometry from retargeted motion, enabling terrain annotation at the scale of existing motion datasets.</p>
+            <p>The predicted distribution is reused at deployment to detect implausible commands online and retract them onto learned behaviors, so the robot attempts tasks in a &ldquo;best-effort&rdquo; manner.</p>
+            <p>The result is a unified policy that takes real-time command, interacts with environment, and stays robust to implausible commands, falls, and disturbances.</p>
+            <p>GigaBrain-WBC-0.5 achieves the highest success rate across all four regimes among three large-scale tracker baselines: 81.3% on terrain interaction (4.3&times; the strongest baseline), 83.1% under implausible commands, and 99.3% fall recovery (16.8&times; the strongest baseline). Hardware trials show robust interaction under missing supports and disturbances; the Unitree G1 checkpoint transfers to the Maker L01 robot with simple fine-tuning.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band-citation" id="citation">
+        <div class="section-shell narrow-shell">
+          <div class="section-heading">
+            <p class="eyebrow">Citation</p>
+            <h2>BibTeX</h2>
+          </div>
+          <pre><code>@article{gigabrainwbc2026,
+  title   = {GigaBrain-WBC-0.5: A Behavior World Model for Robust
+             Whole-Body Control with Environment Interaction},
+  author  = {Cheng, Ziyang and Tang, Tianshu and Lan, Jinxin and Chen, Xinze and Gong, Yuhan and Liu, Zhichao and Wu, Changzhong and Mao, Yahao and Deng, Zongyan and Ma, Mingxuan and Xi, Huasen and Liu, Yilong and Wu, Yutong and Wang, Xiaofeng and Wang, Yang and Ye, Yun and Huang, Guan and Jin, Xiaojie and Zhu, Zheng and Lu, Jiwen},
+  journal = {Technical Report},
+  year    = {2026}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="footer">
+      <div class="section-shell footer-inner">
+        <span>GigaBrain-WBC-0.5</span>
+        <img src="assets/images/ivg-logo2-cropped.png" width="1680" height="260" alt="Tsinghua University i-Vision Group and GigaAI">
+      </div>
+    </footer>
+  </body>
+</html>
