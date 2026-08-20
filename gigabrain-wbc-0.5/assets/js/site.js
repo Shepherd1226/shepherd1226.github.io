@@ -1,4 +1,4 @@
-const mediaFrames = document.querySelectorAll("[data-video], [data-gif]");
+const mediaFrames = document.querySelectorAll("[data-video]");
 
 async function resourceExists(source) {
   // Browsers do not allow fetch/HEAD requests for local file URLs.
@@ -18,6 +18,7 @@ function createVideo(source, label) {
   const video = document.createElement("video");
   video.src = source;
   video.controls = true;
+  video.autoplay = true;
   video.muted = true;
   video.loop = true;
   video.playsInline = true;
@@ -26,59 +27,41 @@ function createVideo(source, label) {
   return video;
 }
 
-function createGif(source, label) {
-  const image = document.createElement("img");
-  image.src = source;
-  image.alt = label || "Demo animation";
-  image.loading = "lazy";
-  image.decoding = "async";
-  return image;
-}
-
 async function attachMedia(frame) {
   const placeholder = frame.firstElementChild?.cloneNode(true);
-  const candidates = [
-    { source: frame.dataset.video, type: "video" },
-    { source: frame.dataset.gif, type: "gif" },
-  ].filter((candidate) => candidate.source);
+  const source = frame.dataset.video;
 
-  for (const candidate of candidates) {
-    try {
-      if (!(await resourceExists(candidate.source))) {
-        continue;
-      }
-
-      const media = candidate.type === "video"
-        ? createVideo(candidate.source, frame.dataset.label)
-        : createGif(candidate.source, frame.dataset.label);
-
-      const loaded = await new Promise((resolve) => {
-        const successEvent = candidate.type === "video" ? "loadedmetadata" : "load";
-        const cleanup = () => {
-          media.removeEventListener(successEvent, onLoad);
-          media.removeEventListener("error", onError);
-        };
-        const onLoad = () => {
-          cleanup();
-          resolve(true);
-        };
-        const onError = () => {
-          cleanup();
-          media.remove();
-          resolve(false);
-        };
-
-        media.addEventListener(successEvent, onLoad, { once: true });
-        media.addEventListener("error", onError, { once: true });
-        frame.replaceChildren(media);
-      });
-
-      if (loaded) {
-        return;
-      }
-    } catch {
-      // Try the next format; if none load, keep the release placeholder.
+  try {
+    if (!source || !(await resourceExists(source))) {
+      return;
     }
+
+    const media = createVideo(source, frame.dataset.label);
+    const loaded = await new Promise((resolve) => {
+      const cleanup = () => {
+        media.removeEventListener("loadedmetadata", onLoad);
+        media.removeEventListener("error", onError);
+      };
+      const onLoad = () => {
+        cleanup();
+        resolve(true);
+      };
+      const onError = () => {
+        cleanup();
+        media.remove();
+        resolve(false);
+      };
+
+      media.addEventListener("loadedmetadata", onLoad, { once: true });
+      media.addEventListener("error", onError, { once: true });
+      frame.replaceChildren(media);
+    });
+
+    if (loaded) {
+      return;
+    }
+  } catch {
+    // Keep the release placeholder if the video cannot be loaded.
   }
 
   if (!frame.firstChild && placeholder) {
@@ -86,7 +69,25 @@ async function attachMedia(frame) {
   }
 }
 
-mediaFrames.forEach(attachMedia);
+if ("IntersectionObserver" in window) {
+  const mediaObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        mediaObserver.unobserve(entry.target);
+        attachMedia(entry.target);
+      });
+    },
+    { rootMargin: "320px 0px" },
+  );
+
+  mediaFrames.forEach((frame) => mediaObserver.observe(frame));
+} else {
+  mediaFrames.forEach(attachMedia);
+}
 
 function scrollToHash() {
   if (!window.location.hash) {
