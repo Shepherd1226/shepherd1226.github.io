@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ZC">
+  <rect width="64" height="64" rx="8" fill="#171719"/>
+  <text
+    x="31"
+    y="41"
+    fill="#ffffff"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="30"
+    font-weight="700"
+    text-anchor="middle"
+  >ZC</text>
+  <circle cx="54" cy="42" r="3" fill="#8f1d45"/>
+</svg>
