@@ -85,9 +85,61 @@
             margin: 0 auto;
             padding: 60px 20px;
         }
-        header {
+        .container main > header {
             text-align: center;
             margin-bottom: 60px;
+        }
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            border-bottom: 1px solid rgba(229, 231, 235, 0.92);
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+        }
+        .header-inner {
+            width: min(calc(100% - 40px), 1200px);
+            min-height: 58px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+        }
+        .wordmark {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #1f2937;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .wordmark-mark {
+            width: 28px;
+            height: 28px;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            background: #1f2937;
+            border-radius: 4px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 17px;
+        }
+        .site-nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .site-nav a {
+            color: #6b7280;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .site-nav a:hover,
+        .site-nav a:focus-visible {
+            color: #2563eb;
         }
         h1 {
             font-size: 2.8rem;
@@ -146,6 +198,45 @@
             fill: currentColor;
             width: 20px;
             height: 20px;
+        }
+        .contact-note {
+            margin: -18px 0 40px;
+            color: #6b7280;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .contact-note a {
+            color: #4b5563;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .contact-note a:hover,
+        .contact-note a:focus-visible {
+            color: #2563eb;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .site-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 60px;
+            padding-top: 20px;
+            color: #6b7280;
+            font-size: 0.9rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        .site-footer a {
+            color: #4b5563;
+            text-decoration: none;
+        }
+        .site-footer a:hover,
+        .site-footer a:focus-visible {
+            color: #2563eb;
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
         section {
             margin-bottom: 80px;
@@ -285,13 +376,52 @@
                 grid-template-columns: 1fr;
             }
         }
+        @media (max-width: 620px) {
+            .header-inner {
+                width: min(calc(100% - 30px), 1200px);
+                min-height: 54px;
+            }
+            .wordmark {
+                font-size: 12px;
+            }
+            .wordmark-mark {
+                width: 26px;
+                height: 26px;
+            }
+            .site-nav {
+                gap: 14px;
+            }
+            .site-nav a {
+                font-size: 11px;
+            }
+        }
+        @media (max-width: 420px) {
+            .site-nav a:first-child {
+                display: none;
+            }
+        }
     </style>
 
     <!-- Umami Analytics -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="55924cf6-b27a-4d31-bd56-b4c29e3b97ac"></script>
 </head>
 <body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="wordmark" href="#top" aria-label="CMP home">
+                <span class="wordmark-mark" aria-hidden="true">C</span>
+                <span>CMP</span>
+            </a>
+            <nav class="site-nav" aria-label="Page sections">
+                <a href="#abstract">Overview</a>
+                <a href="#analysis">Analysis</a>
+                <a href="#bibtex">BibTeX</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
     <div class="container">
+        <main id="top">
         <header>
             <h1><span style="color: #86D549">C</span><span style="color: #668FF4">M</span><span style="color: #F1416B">P</span>: Robust Whole-Body Tracking for Loco-Manipulation via Competence Manifold Projection</h1>
             <div class="authors">
@@ -320,6 +450,10 @@
                     Code (Coming Soon)
                 </a>
             </div>
+            <p class="contact-note">
+                Questions or collaboration? <a href="mailto:zycheng1226@gmail.com">Contact us</a>
+                <span aria-hidden="true">&middot;</span> zycheng1226@gmail.com
+            </p>
         </header>
 
         <div class="teaser-video-container">
@@ -506,13 +640,13 @@
   year={2026}
 }</code></pre>
         </section>
+        </main>
 
-        <!-- <footer style="text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.95rem;">
-            <span id="busuanzi_container_site_pv">
-                Page Views: <span id="busuanzi_value_site_pv" style="font-weight: 600; color: #374151;"></span>
-            </span>
+        <footer class="site-footer" id="contact">
+            <span>CMP</span>
+            <span aria-hidden="true">&middot;</span>
+            <a href="mailto:zycheng1226@gmail.com">Contact us: zycheng1226@gmail.com</a>
         </footer>
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
 
     </div>
 </body>
