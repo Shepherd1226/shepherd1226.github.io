@@ -38,7 +38,7 @@
         "name": "Ziyang Cheng | Robotics & Machine Learning",
         "description": "Ziyang Cheng is a Ph.D. student at Tsinghua University researching whole-body control, humanoid teleoperation, and safe, robust robotics.",
         "dateCreated": "2026-08-20",
-        "dateModified": "2026-08-22",
+        "dateModified": "2026-08-30",
         "mainEntity": {
           "@type": "Person",
           "@id": "https://shepherd1226.github.io/#person",
@@ -82,17 +82,29 @@
     <script defer src="https://cloud.umami.is/script.js" data-website-id="55924cf6-b27a-4d31-bd56-b4c29e3b97ac"></script>
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content" data-i18n="skipLink">Skip to content</a>
 
     <header class="site-header">
       <div class="shell header-inner">
-        <a class="wordmark" href="#top" aria-label="Ziyang Cheng, home">ZC<span>.</span></a>
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a href="#about">About</a>
-          <a href="#news">News</a>
-          <a href="#publications">Publications</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        <a class="wordmark" href="#top" aria-label="Ziyang Cheng, home" data-i18n-aria-label="wordmarkAria">ZC<span>.</span></a>
+        <div class="header-actions">
+          <nav class="site-nav" aria-label="Primary navigation" data-i18n-aria-label="navLabel">
+            <a href="#about" data-i18n="navAbout">About</a>
+            <a href="#news" data-i18n="navNews">News</a>
+            <a href="#publications" data-i18n="navPublications">Publications</a>
+            <a href="#awards" data-i18n="navAwards">Awards</a>
+            <a href="#contact" data-i18n="navContact">Contact</a>
+          </nav>
+          <button
+            class="language-toggle"
+            type="button"
+            aria-label="Switch to Chinese"
+            title="Switch to Chinese"
+          >
+            <i data-lucide="languages" aria-hidden="true"></i>
+            <span>中文</span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -100,44 +112,44 @@
       <section class="intro shell" id="top" aria-labelledby="page-title">
         <div class="intro-grid">
           <div class="intro-main" id="about">
-            <p class="eyebrow">Robotics &middot; Machine Learning</p>
-            <h1 id="page-title">Ziyang Cheng</h1>
-            <p class="role">Ph.D. Student in Electronic Information at Tsinghua University</p>
+            <p class="eyebrow" data-i18n="introEyebrow">Robotics &middot; Machine Learning</p>
+            <h1 id="page-title" data-i18n="pageName">Ziyang Cheng</h1>
+            <p class="role" data-i18n="role">Ph.D. Student in Electronic Information at Tsinghua University</p>
             <div class="bio">
-              <p>
+              <p data-i18n-html="bioCurrent">
                 I am a first-year Ph.D. student in the
                 <a href="https://www.au.tsinghua.edu.cn/" target="_blank" rel="noopener">Department of Automation</a>
                 at Tsinghua University, advised by
                 <a href="https://scholar.google.com/citations?user=TN8uDQoAAAAJ&amp;hl=en" target="_blank" rel="noopener">Prof. Jiwen Lu</a>.
               </p>
-              <p>
+              <p data-i18n-html="bioPrevious">
                 Before that, I completed my undergraduate studies at Tsinghua University
                 (2022&ndash;2026), earning bachelor's degrees in Mathematics and Physics &amp;
                 Mechanical Engineering.
               </p>
             </div>
             <div class="research-summary">
-              <p>I work on robotics and machine learning. My <strong>current research focuses on</strong>:</p>
+              <p data-i18n-html="researchIntro">I work on robotics and machine learning. My <strong>current research focuses on</strong>:</p>
               <ol>
-                <li>
+                <li data-i18n-html="researchOne">
                   <strong>Whole-Body Control for Legged Robots</strong>, studying coordinated whole-body behaviors for loco-manipulation.
                 </li>
-                <li>
+                <li data-i18n-html="researchTwo">
                   <strong>Humanoid Teleoperation</strong>, developing intuitive teleoperation systems that transfer human intent to humanoid robots.
                 </li>
-                <li>
+                <li data-i18n-html="researchThree">
                   <strong>Safe and Robust Robotics</strong>, addressing both physical and semantic safety for robots operating in complex environments.
                 </li>
               </ol>
             </div>
-            <div class="profile-links" aria-label="Profile links">
+            <div class="profile-links" aria-label="Profile links" data-i18n-aria-label="profileLinksLabel">
               <a href="mailto:zy-cheng22@mails.tsinghua.edu.cn">
                 <i data-lucide="mail" aria-hidden="true"></i>
-                <span>Email</span>
+                <span data-i18n="email">Email</span>
               </a>
               <a href="https://scholar.google.com/citations?user=yQs5aQwAAAAJ&amp;hl=en" target="_blank" rel="noopener">
                 <i data-lucide="graduation-cap" aria-hidden="true"></i>
-                <span>Google Scholar</span>
+                <span data-i18n="scholar">Google Scholar</span>
               </a>
               <a href="https://github.com/shepherd1226" target="_blank" rel="noopener">
                 <i data-lucide="github" aria-hidden="true"></i>
@@ -151,6 +163,7 @@
               width="700"
               height="920"
               alt="Ziyang Cheng at Tsinghua University"
+              data-i18n-alt="profileAlt"
             >
           </figure>
         </div>
@@ -159,13 +172,13 @@
       <section class="news-band" id="news" aria-labelledby="news-title">
         <div class="shell news-inner">
           <div class="news-heading">
-            <p class="eyebrow">Updates</p>
-            <h2 id="news-title">News</h2>
+            <p class="eyebrow" data-i18n="newsEyebrow">Updates</p>
+            <h2 id="news-title" data-i18n="newsTitle">News</h2>
           </div>
           <ul class="news-list">
             <li>
-              <time datetime="2026-08-20">Aug 20, 2026</time>
-              <p>
+              <time datetime="2026-08-20" data-i18n="newsDate">Aug 20, 2026</time>
+              <p data-i18n-html="newsItem">
                 Released the technical report for
                 <a href="https://arxiv.org/abs/2608.18234" target="_blank" rel="noopener">GigaBrain-WBC-0.5: A Behavior World Model for Robust Whole-Body Control with Environment Interaction</a>.
               </p>
@@ -177,8 +190,8 @@
       <section class="publications-band" id="publications" aria-labelledby="publications-title">
         <div class="shell">
           <div class="section-heading">
-            <p class="eyebrow">Selected work</p>
-            <h2 id="publications-title">Publications</h2>
+            <p class="eyebrow" data-i18n="publicationsEyebrow">Selected work</p>
+            <h2 id="publications-title" data-i18n="publicationsTitle">Publications</h2>
           </div>
 
           <div class="publication-list">
@@ -189,17 +202,19 @@
                 target="_blank"
                 rel="noopener"
                 aria-label="Open the GigaBrain-WBC-0.5 paper"
+                data-i18n-aria-label="paperOneAria"
               >
                 <img
                   src="assets/images/gigabrain-wbc.webp"
                   width="1200"
                   height="742"
                   alt="Overview of the GigaBrain-WBC behavior world model and robot demonstrations"
+                  data-i18n-alt="paperOneAlt"
                 >
                 <span class="media-index" aria-hidden="true">01</span>
               </a>
               <div class="publication-content">
-                <div class="publication-meta"><span>2026</span><span>Preprint</span></div>
+                <div class="publication-meta"><span>2026</span><span data-i18n="preprint">Preprint</span></div>
                 <h3>GigaBrain-WBC-0.5: A Behavior World Model for Robust Whole-Body Control with Environment Interaction</h3>
                 <p class="authors">
                   <strong>Ziyang Cheng</strong>, Tianshu Tang, Jinxin Lan, Xinze Chen, Yuhan Gong,
@@ -210,10 +225,10 @@
                 <p class="venue">arXiv preprint arXiv:2608.18234</p>
                 <div class="publication-links">
                   <a href="https://arxiv.org/abs/2608.18234" target="_blank" rel="noopener">
-                    <i data-lucide="file-text" aria-hidden="true"></i><span>Paper</span>
+                    <i data-lucide="file-text" aria-hidden="true"></i><span data-i18n="paper">Paper</span>
                   </a>
                   <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">
-                    <i data-lucide="layout" aria-hidden="true"></i><span>Webpage</span>
+                    <i data-lucide="layout" aria-hidden="true"></i><span data-i18n="webpage">Webpage</span>
                   </a>
                 </div>
               </div>
@@ -226,17 +241,19 @@
                 target="_blank"
                 rel="noopener"
                 aria-label="Open the CMP paper"
+                data-i18n-aria-label="paperTwoAria"
               >
                 <img
                   src="assets/images/cmp.webp"
                   width="1200"
                   height="482"
                   alt="Robot demonstrations and competence manifold projection overview for CMP"
+                  data-i18n-alt="paperTwoAlt"
                 >
                 <span class="media-index" aria-hidden="true">02</span>
               </a>
               <div class="publication-content">
-                <div class="publication-meta"><span>2026</span><span>Preprint</span></div>
+                <div class="publication-meta"><span>2026</span><span data-i18n="preprint">Preprint</span></div>
                 <h3>CMP: Robust Whole-Body Tracking for Loco-Manipulation via Competence Manifold Projection</h3>
                 <p class="authors">
                   <strong>Ziyang Cheng</strong>, Haoyu Wei, Hang Yin, Xiuwei Xu, Bingyao Yu,
@@ -245,10 +262,10 @@
                 <p class="venue">arXiv preprint arXiv:2604.07457</p>
                 <div class="publication-links">
                   <a href="https://arxiv.org/abs/2604.07457" target="_blank" rel="noopener">
-                    <i data-lucide="file-text" aria-hidden="true"></i><span>Paper</span>
+                    <i data-lucide="file-text" aria-hidden="true"></i><span data-i18n="paper">Paper</span>
                   </a>
                   <a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">
-                    <i data-lucide="layout" aria-hidden="true"></i><span>Webpage</span>
+                    <i data-lucide="layout" aria-hidden="true"></i><span data-i18n="webpage">Webpage</span>
                   </a>
                 </div>
               </div>
@@ -261,17 +278,19 @@
                 target="_blank"
                 rel="noopener"
                 aria-label="Open the adaptive grasping force tracking paper"
+                data-i18n-aria-label="paperThreeAria"
               >
                 <img
                   src="assets/images/tase-grasping.webp"
                   width="1200"
                   height="774"
                   alt="Adaptive grasping force tracking control diagram and experimental platform"
+                  data-i18n-alt="paperThreeAlt"
                 >
                 <span class="media-index" aria-hidden="true">03</span>
               </a>
               <div class="publication-content">
-                <div class="publication-meta"><span>2025</span><span>Journal</span></div>
+                <div class="publication-meta"><span>2025</span><span data-i18n="journal">Journal</span></div>
                 <h3>An Adaptive Grasping Force Tracking Strategy for Nonlinear and Time-Varying Object Behaviors</h3>
                 <p class="authors">
                   <strong>Ziyang Cheng</strong>, Xiangyu Tian, Ruomin Sui, Tiemin Li, Yao Jiang
@@ -279,10 +298,10 @@
                 <p class="venue"><em>IEEE Transactions on Automation Science and Engineering</em>, vol. 22, pp. 17063&ndash;17076</p>
                 <div class="publication-links">
                   <a href="https://arxiv.org/abs/2412.02335" target="_blank" rel="noopener">
-                    <i data-lucide="file-text" aria-hidden="true"></i><span>Paper</span>
+                    <i data-lucide="file-text" aria-hidden="true"></i><span data-i18n="paper">Paper</span>
                   </a>
                   <a href="https://github.com/Shepherd1226/Generalized_Stiffness_Estimator" target="_blank" rel="noopener">
-                    <i data-lucide="github" aria-hidden="true"></i><span>Code</span>
+                    <i data-lucide="github" aria-hidden="true"></i><span data-i18n="code">Code</span>
                   </a>
                 </div>
               </div>
@@ -291,10 +310,43 @@
         </div>
       </section>
 
+      <section class="awards-band" id="awards" aria-labelledby="awards-title">
+        <div class="shell">
+          <div class="awards-heading">
+            <div>
+              <p class="eyebrow" data-i18n="awardsEyebrow">Recognition</p>
+              <h2 id="awards-title" data-i18n="awardsTitle">Grants, Honors &amp; Awards</h2>
+            </div>
+          </div>
+
+          <div class="awards-columns">
+            <div class="awards-group">
+              <h3 data-i18n="honorsPrograms">Honors &amp; Grants</h3>
+              <ol class="award-list">
+                <li><span class="award-year">2024</span><strong data-i18n="awardNational">National Scholarship, China</strong></li>
+                <li><span class="award-year">2025</span><strong data-i18n="awardQiyan">Undergraduate Qiyan Research Program, Beijing Natural Science Foundation</strong></li>
+                <li><span class="award-year">2024</span><strong data-i18n="awardInnovation">Scientific and Technological Innovation Excellence Scholarship, Tsinghua University</strong></li>
+                <li><span class="award-year">2023</span><strong data-i18n="awardComprehensive">Comprehensive Excellence Scholarship, Tsinghua University</strong></li>
+                <li><span class="award-year" data-i18n="cohort18">18th</span><strong data-i18n="awardSpark">Spark Student Innovation Fellowship, Tsinghua University</strong></li>
+              </ol>
+            </div>
+
+            <div class="awards-group">
+              <h3 data-i18n="competitionAwards">Competitions</h3>
+              <ol class="award-list">
+                <li><span class="award-level" data-i18n="firstPrize">First Prize</span><strong data-i18n="awardPhysics">39th National Undergraduate Physics Competition, Non-Physics Major Group A</strong></li>
+                <li><span class="award-level" data-i18n="firstPrize">First Prize</span><strong data-i18n="awardSrt">2024 Student Research Training Program Outstanding Project</strong></li>
+                <li><span class="award-level" data-i18n="thirdSecond">3rd Place &amp; Second Prize</span><strong data-i18n="awardChallenge">42nd Tsinghua University Challenge Cup Competition (First Author)</strong></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="contact shell" id="contact" aria-labelledby="contact-title">
-        <p class="eyebrow">Get in touch</p>
+        <p class="eyebrow" data-i18n="contactEyebrow">Get in touch</p>
         <div class="contact-row">
-          <h2 id="contact-title">Let's talk about robots.</h2>
+          <h2 id="contact-title" data-i18n="contactTitle">Let's talk about robots.</h2>
           <a class="contact-link" href="mailto:zy-cheng22@mails.tsinghua.edu.cn">
             <span>zy-cheng22@mails.tsinghua.edu.cn</span>
             <i data-lucide="arrow-up-right" aria-hidden="true"></i>
@@ -305,7 +357,7 @@
 
     <footer class="site-footer">
       <div class="shell footer-inner">
-        <span>&copy; Ziyang Cheng <span class="footer-divider" aria-hidden="true">|</span> Last updated: Aug 20, 2026</span>
+        <span>&copy; Ziyang Cheng <span class="footer-divider" aria-hidden="true">|</span> <span data-i18n="lastUpdated">Last updated: Aug 30, 2026</span></span>
       </div>
     </footer>
   </body>
