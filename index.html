@@ -38,7 +38,7 @@
         "name": "Ziyang Cheng | Robotics & Machine Learning",
         "description": "Ziyang Cheng is a Ph.D. student at Tsinghua University researching whole-body control, humanoid teleoperation, and safe, robust robotics.",
         "dateCreated": "2026-08-20",
-        "dateModified": "2026-08-30",
+        "dateModified": "2026-09-04",
         "mainEntity": {
           "@type": "Person",
           "@id": "https://shepherd1226.github.io/#person",
@@ -220,9 +220,12 @@
                   <strong>Ziyang Cheng</strong>, Tianshu Tang, Jinxin Lan, Xinze Chen, Yuhan Gong,
                   Zhichao Liu, Changzhong Wu, Yahao Mao, Zongyan Deng, Mingxuan Ma, Huasen Xi,
                   Yilong Liu, Yutong Wu, Xiaofeng Wang, Yang Wang, Yun Ye, Guan Huang,
-                  Xiaojie Jin, Zheng Zhu, Jiwen Lu
+                  Xiaojie Jin, Zheng Zhu<sup>#</sup>, Jiwen Lu<sup>#</sup>
                 </p>
                 <p class="venue">arXiv preprint arXiv:2608.18234</p>
+                <p class="publication-summary" data-i18n="paperOneDescription">
+                  We present GigaBrain-WBC-0.5, a behavior world model for humanoid whole-body control. It predicts actions, states, and behavior commands to support environment interaction, reject implausible commands, recover from falls, and withstand disturbances.
+                </p>
                 <div class="publication-links">
                   <a href="https://arxiv.org/abs/2608.18234" target="_blank" rel="noopener">
                     <i data-lucide="file-text" aria-hidden="true"></i><span data-i18n="paper">Paper</span>
@@ -257,9 +260,12 @@
                 <h3>CMP: Robust Whole-Body Tracking for Loco-Manipulation via Competence Manifold Projection</h3>
                 <p class="authors">
                   <strong>Ziyang Cheng</strong>, Haoyu Wei, Hang Yin, Xiuwei Xu, Bingyao Yu,
-                  Jie Zhou, Jiwen Lu
+                  Jie Zhou, Jiwen Lu<sup>#</sup>
                 </p>
                 <p class="venue">arXiv preprint arXiv:2604.07457</p>
+                <p class="publication-summary" data-i18n="paperTwoDescription">
+                  We propose CMP, a competence manifold projection method for robust whole-body tracking in loco-manipulation. It projects unsafe or out-of-distribution commands onto learned competence boundaries, improving survival by up to tenfold with limited tracking degradation.
+                </p>
                 <div class="publication-links">
                   <a href="https://arxiv.org/abs/2604.07457" target="_blank" rel="noopener">
                     <i data-lucide="file-text" aria-hidden="true"></i><span data-i18n="paper">Paper</span>
@@ -274,28 +280,74 @@
             <article class="publication">
               <a
                 class="publication-media"
+                href="https://arxiv.org/abs/2604.02408"
+                target="_blank"
+                rel="noopener"
+                aria-label="Open the F2F-AP paper"
+                data-i18n-aria-label="paperThreeAria"
+              >
+                <img
+                  src="assets/images/f2f-ap.gif"
+                  width="479"
+                  height="271"
+                  alt="F2F-AP real-time dynamic manipulation demonstrations"
+                  data-i18n-alt="paperThreeAlt"
+                >
+                <span class="media-index" aria-hidden="true">03</span>
+              </a>
+              <div class="publication-content">
+                <div class="publication-meta"><span>2026</span><span data-i18n="preprint">Preprint</span></div>
+                <h3>F2F-AP: Flow-to-Future Asynchronous Policy for Real-time Dynamic Manipulation</h3>
+                <p class="authors">
+                  Haoyu Wei, Xiuwei Xu<sup>†</sup>, <strong>Ziyang Cheng</strong>,
+                  Hang Yin, Angyuan Ma, Bingyao Yu, Jie Zhou, Jiwen Lu<sup>#</sup>
+                </p>
+                <p class="venue">arXiv preprint arXiv:2604.02408</p>
+                <p class="publication-summary" data-i18n="paperThreeDescription">
+                  We propose F2F-AP, a flow-to-future asynchronous policy for real-time dynamic manipulation. It predicts object flow to synthesize future observations and aligns visual features with future states, allowing policies to compensate for latency and interact with moving objects.
+                </p>
+                <div class="publication-links">
+                  <a href="https://arxiv.org/abs/2604.02408" target="_blank" rel="noopener">
+                    <i data-lucide="file-text" aria-hidden="true"></i><span data-i18n="paper">Paper</span>
+                  </a>
+                  <a href="https://github.com/f2f-ap/f2f-ap" target="_blank" rel="noopener">
+                    <i data-lucide="github" aria-hidden="true"></i><span data-i18n="code">Code</span>
+                  </a>
+                  <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">
+                    <i data-lucide="layout" aria-hidden="true"></i><span data-i18n="projectPage">Project Page</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="publication">
+              <a
+                class="publication-media"
                 href="https://arxiv.org/abs/2412.02335"
                 target="_blank"
                 rel="noopener"
                 aria-label="Open the adaptive grasping force tracking paper"
-                data-i18n-aria-label="paperThreeAria"
+                data-i18n-aria-label="paperFourAria"
               >
                 <img
                   src="assets/images/tase-grasping.webp"
                   width="1200"
                   height="774"
                   alt="Adaptive grasping force tracking control diagram and experimental platform"
-                  data-i18n-alt="paperThreeAlt"
+                  data-i18n-alt="paperFourAlt"
                 >
-                <span class="media-index" aria-hidden="true">03</span>
+                <span class="media-index" aria-hidden="true">04</span>
               </a>
               <div class="publication-content">
                 <div class="publication-meta"><span>2025</span><span data-i18n="journal">Journal</span></div>
                 <h3>An Adaptive Grasping Force Tracking Strategy for Nonlinear and Time-Varying Object Behaviors</h3>
                 <p class="authors">
-                  <strong>Ziyang Cheng</strong>, Xiangyu Tian, Ruomin Sui, Tiemin Li, Yao Jiang
+                  <strong>Ziyang Cheng</strong>, Xiangyu Tian, Ruomin Sui, Tiemin Li, Yao Jiang<sup>#</sup>
                 </p>
                 <p class="venue"><em>IEEE Transactions on Automation Science and Engineering</em>, vol. 22, pp. 17063&ndash;17076</p>
+                <p class="publication-summary" data-i18n="paperFourDescription">
+                  We introduce generalized stiffness for nonlinear, time-varying grasp systems and estimate it online with an LSTM. The resulting adaptive PI strategy tracks grasp force accurately across unknown object behaviors, improving robotic grasping in unstructured environments.
+                </p>
                 <div class="publication-links">
                   <a href="https://arxiv.org/abs/2412.02335" target="_blank" rel="noopener">
                     <i data-lucide="file-text" aria-hidden="true"></i><span data-i18n="paper">Paper</span>
@@ -307,6 +359,7 @@
               </div>
             </article>
           </div>
+          <p class="publication-notes" data-i18n="authorNotes">* Equal contribution, † Project leader, # Corresponding author.</p>
         </div>
       </section>
 
@@ -357,7 +410,7 @@
 
     <footer class="site-footer">
       <div class="shell footer-inner">
-        <span>&copy; Ziyang Cheng <span class="footer-divider" aria-hidden="true">|</span> <span data-i18n="lastUpdated">Last updated: Aug 30, 2026</span></span>
+        <span>&copy; Ziyang Cheng <span class="footer-divider" aria-hidden="true">|</span> <span data-i18n="lastUpdated">Last updated: Sep 4, 2026</span></span>
       </div>
     </footer>
   </body>
