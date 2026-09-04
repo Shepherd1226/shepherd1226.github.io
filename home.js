@@ -139,18 +139,7 @@ const sections = navLinks
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
 
-const getSavedLanguage = () => {
-  try {
-    return localStorage.getItem("preferred-language");
-  } catch {
-    return null;
-  }
-};
-
-const savedLanguage = getSavedLanguage();
-let currentLanguage = savedLanguage === "zh" || savedLanguage === "en"
-  ? savedLanguage
-  : navigator.language.toLowerCase().startsWith("zh") ? "zh" : "en";
+let currentLanguage = "en";
 
 const applyLanguage = (language) => {
   const copy = translations[language];
@@ -178,11 +167,6 @@ const applyLanguage = (language) => {
 languageToggle.addEventListener("click", () => {
   currentLanguage = currentLanguage === "en" ? "zh" : "en";
   applyLanguage(currentLanguage);
-  try {
-    localStorage.setItem("preferred-language", currentLanguage);
-  } catch {
-    // The language still switches when storage is unavailable.
-  }
 });
 
 const updateHeader = () => {
