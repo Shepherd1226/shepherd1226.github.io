@@ -29,9 +29,12 @@ const translations = {
     profileAlt: "Ziyang Cheng at Tsinghua University",
     newsEyebrow: "Updates",
     newsTitle: "News",
+    corlNewsDate: "Sep 5, 2026",
+    corlNewsItem:
+      '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> and <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> were accepted to CoRL 2026.',
     newsDate: "Aug 20, 2026",
     newsItem:
-      'Released the technical report for <a href="https://arxiv.org/abs/2608.18234" target="_blank" rel="noopener">GigaBrain-WBC-0.5: A Behavior World Model for Robust Whole-Body Control with Environment Interaction</a>.',
+      'Released the technical report for <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5: A Behavior World Model for Robust Whole-Body Control with Environment Interaction</a>.',
     publicationsEyebrow: "Selected work",
     publicationsTitle: "Publications",
     paperOneAria: "Open the GigaBrain-WBC-0.5 paper",
@@ -105,9 +108,12 @@ const translations = {
     profileAlt: "程子扬的个人照片",
     newsEyebrow: "近期动态",
     newsTitle: "动态",
+    corlNewsDate: "2026 年 9 月 5 日",
+    corlNewsItem:
+      '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> 与 <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> 被 CoRL 2026 录用。',
     newsDate: "2026 年 8 月 20 日",
     newsItem:
-      '技术报告 <a href="https://arxiv.org/abs/2608.18234" target="_blank" rel="noopener">GigaBrain-WBC-0.5: A Behavior World Model for Robust Whole-Body Control with Environment Interaction</a> 已发布。',
+      '技术报告 <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5: A Behavior World Model for Robust Whole-Body Control with Environment Interaction</a> 已发布。',
     publicationsEyebrow: "代表作",
     publicationsTitle: "论文",
     paperOneAria: "查看 GigaBrain-WBC-0.5 论文",
