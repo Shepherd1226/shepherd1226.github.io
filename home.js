@@ -9,13 +9,15 @@ const translations = {
     navPublications: "Publications",
     navAwards: "Awards",
     navContact: "Contact",
-    introEyebrow: "Robotics · Machine Learning",
+    introEyebrow: "i-Vision Group, Tsinghua University",
     pageName: "Ziyang Cheng",
     role: "Ph.D. Student in Electronic Information at Tsinghua University",
     bioCurrent:
       'I am a first-year Ph.D. student in the <a href="https://www.au.tsinghua.edu.cn/" target="_blank" rel="noopener">Department of Automation</a> at Tsinghua University, advised by <a href="https://scholar.google.com/citations?user=TN8uDQoAAAAJ&amp;hl=en" target="_blank" rel="noopener">Prof. Jiwen Lu</a>.',
     bioPrevious:
       "Before that, I completed my undergraduate studies at Tsinghua University (2022–2026), earning bachelor's degrees in Mathematics and Physics &amp; Mechanical Engineering.",
+    bioUiuc:
+      'In 2025, I worked as a research intern at the <a href="https://illinois.edu/" target="_blank" rel="noopener">University of Illinois Urbana-Champaign (UIUC)</a> with <a href="https://yxw.web.illinois.edu/" target="_blank" rel="noopener">Prof. Yuxiong Wang</a>.',
     researchIntro: "I work on robotics and machine learning. My <strong>current research focuses on</strong>:",
     researchOne:
       "<strong>Whole-Body Control for Legged Robots</strong>, studying coordinated whole-body behaviors for loco-manipulation.",
@@ -77,7 +79,7 @@ const translations = {
     awardChallenge: "42nd Tsinghua University Challenge Cup Competition (First Author)",
     contactEyebrow: "Get in touch",
     contactTitle: "Let's talk about robots!",
-    lastUpdated: "Last updated: Sep 5, 2026",
+    lastUpdated: "Last updated: Sep 10, 2026",
     switchLabel: "Switch to Chinese",
     switchText: "中文",
   },
@@ -91,13 +93,15 @@ const translations = {
     navPublications: "论文",
     navAwards: "荣誉",
     navContact: "联系",
-    introEyebrow: "机器人 · 机器学习",
+    introEyebrow: "清华大学 i-Vision Group",
     pageName: "程子扬",
     role: "清华大学自动化系电子信息专业直博生",
     bioCurrent:
       '现为清华大学<a href="https://www.au.tsinghua.edu.cn/" target="_blank" rel="noopener">自动化系</a>一年级直博生，师从<a href="https://scholar.google.com/citations?user=TN8uDQoAAAAJ&amp;hl=en" target="_blank" rel="noopener">鲁继文教授</a>。',
     bioPrevious:
       "本科就读于清华大学（2022—2026），获数理基础科学与机械工程双学士学位。",
+    bioUiuc:
+      '2025 年，曾赴<a href="https://illinois.edu/" target="_blank" rel="noopener">伊利诺伊大学厄巴纳-香槟分校（UIUC）</a>开展暑期研究，与<a href="https://yxw.web.illinois.edu/" target="_blank" rel="noopener">王宇雄教授</a>合作。',
     researchIntro: "我的研究聚焦于机器人学习与人形机器人控制，主要包括：",
     researchOne: "<strong>足式机器人全身控制</strong>：面向移动操作任务，研究全身协调策略与控制方法。",
     researchTwo: "<strong>人形机器人遥操作</strong>：探索自然、直观的遥操作方式，将操作者的意图准确转化为机器人动作。",
@@ -154,9 +158,9 @@ const translations = {
     awardSrt: "2024 年大学生研究训练计划（SRT）优秀项目",
     thirdSecond: "二等奖 · 第三名",
     awardChallenge: "清华大学第四十二届“挑战杯”学生课外学术科技作品竞赛（第一作者）",
-    contactEyebrow: "联系我",
+    contactEyebrow: "联系方式",
     contactTitle: "欢迎与我聊机器人！",
-    lastUpdated: "更新于 2026 年 9 月 5 日",
+    lastUpdated: "更新于 2026 年 9 月 10 日",
     switchLabel: "切换为英文",
     switchText: "EN",
   },
@@ -223,6 +227,58 @@ window.addEventListener("scroll", updateHeader, { passive: true });
 updateHeader();
 
 applyLanguage(currentLanguage);
+
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+if (!reducedMotion.matches) {
+  const pageSections = [...document.querySelectorAll("main > section")];
+  document.documentElement.classList.add("motion-ready");
+
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.motionReveal.classList.toggle("is-in-view", entry.isIntersecting);
+        });
+      },
+      { rootMargin: "80px 0px", threshold: 0.01 },
+    );
+
+    pageSections.forEach((section, index) => {
+      const reveal = section.matches(".intro, .contact")
+        ? section
+        : section.querySelector(":scope > .shell");
+      if (!reveal) return;
+      reveal.classList.add("motion-reveal");
+      if (index % 2 === 1) reveal.classList.add("from-right");
+      section.motionReveal = reveal;
+      const bounds = section.getBoundingClientRect();
+      if (bounds.top < window.innerHeight && bounds.bottom > 0) {
+        window.requestAnimationFrame(() => reveal.classList.add("is-in-view"));
+      }
+      revealObserver.observe(section);
+    });
+  } else {
+    pageSections.forEach((section) => section.classList.add("is-in-view"));
+  }
+
+  document.querySelectorAll(".award-list").forEach((list) => {
+    const marquee = document.createElement("div");
+    const track = document.createElement("div");
+    marquee.className = "award-marquee";
+    track.className = "award-marquee-track";
+    list.before(marquee);
+    marquee.append(track);
+    track.append(list);
+
+    for (let index = 0; index < 2; index += 1) {
+      const clone = list.cloneNode(true);
+      clone.classList.add("is-clone");
+      clone.setAttribute("aria-hidden", "true");
+      track.append(clone);
+    }
+  });
+}
 
 if (window.lucide) {
   window.lucide.createIcons({ attrs: { "aria-hidden": "true" } });
