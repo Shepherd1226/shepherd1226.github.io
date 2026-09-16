@@ -91,7 +91,7 @@
           <a href="#demos">Demos</a>
           <a href="#results">Results</a>
           <a href="#method">Method</a>
-          <a href="#footer">Contact</a>
+          <a href="https://shepherd1226.github.io/" target="_blank" rel="noopener">Contact</a>
         </nav>
       </div>
     </header>
@@ -145,10 +145,6 @@
             <span>Code</span><small>coming soon</small>
           </a>
         </div>
-        <p class="contact-note">
-          Questions or collaboration? <a href="mailto:zycheng1226@gmail.com">Contact us</a>
-          <span aria-hidden="true">&middot;</span> zycheng1226@gmail.com
-        </p>
       </section>
 
       <section class="section-shell hero-demo" aria-labelledby="full-demo-title">
@@ -193,11 +189,11 @@
               <p>Ours lifts and holds the box while SONIC loses a stable grasp.</p>
             </article>
             <article class="media-item">
-              <div class="media-frame" data-video="assets/videos/sonic-payload2.mp4" data-label="SONIC versus ours: kneel-to-stand with a 2 kg fire extinguisher">
+              <div class="media-frame" data-video="assets/videos/sonic-payload2.mp4" data-label="SONIC versus ours: kneel-to-stand with a heavy fire extinguisher">
                 <div class="media-placeholder"><span class="media-index">02</span><div><strong>Fire extinguisher</strong><span>Object interaction</span></div></div>
               </div>
-              <h3>Kneel-to-stand with payload</h3>
-              <p>Ours rises while holding a 2 kg fire extinguisher; SONIC falls during the ascent.</p>
+              <h3>Rising with a fire extinguisher</h3>
+              <p>Ours rises while holding a heavy fire extinguisher; SONIC falls during the ascent.</p>
             </article>
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/sonic-terrain.mp4" data-label="SONIC versus ours: stepping onto a platform">
@@ -210,8 +206,8 @@
               <div class="media-frame" data-video="assets/videos/sonic-terrain2.mp4" data-label="SONIC versus ours: sitting on a box support">
                 <div class="media-placeholder"><span class="media-index">04</span><div><strong>Sit on a box</strong><span>Terrain interaction</span></div></div>
               </div>
-              <h3>Sitting on a support</h3>
-              <p>Ours loads the box as a seat; SONIC remains in a half-squat without stable support.</p>
+              <h3>Sitting on a box</h3>
+              <p>SONIC only half-squats without sitting, whereas GigaBrain-WBC-0.5 completes the motion.</p>
             </article>
           </div>
         </div>
@@ -224,7 +220,7 @@
               <p class="eyebrow">Capability 01</p>
               <h2>Environment interaction</h2>
             </div>
-            <p>The controller turns seats and platforms into load-bearing support while coordinating balance with carried objects.</p>
+            <p>The same policy can simultaneously perform cross-terrain mobility and object manipulation.</p>
           </div>
           <div class="media-grid media-grid-three">
             <article class="media-item">
@@ -259,7 +255,7 @@
               <p class="eyebrow">Capability 02</p>
               <h2>Extreme robustness</h2>
             </div>
-            <p>When the command under current environment is infeasible, the policy remains driveable.</p>
+            <p>When a command is implausible in the current environment, the policy produces a stable best-effort response while retaining achievable intent.</p>
           </div>
           <div class="media-grid media-grid-two">
             <article class="media-item">
@@ -267,21 +263,21 @@
                 <div class="media-placeholder"><span class="media-index">08</span><div><strong>Chair removed</strong><span>Best-effort squat</span></div></div>
               </div>
               <h3>Missing support</h3>
-              <p>The same sitting command resolves to a stable squat.</p>
+              <p>With an expected chair absent, the same sitting command resolves to a stable squat.</p>
             </article>
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/robust-step-removed.mp4" data-label="Step removed">
                 <div class="media-placeholder"><span class="media-index">09</span><div><strong>Step removed</strong><span>Continuous task</span></div></div>
               </div>
               <h3>Changed terrain</h3>
-              <p>The robot keeps carrying instead of committing to a missing step.</p>
+              <p>With the expected platform absent, the policy settles into a stable best-effort motion. The robot keeps carrying instead of stopping.</p>
             </article>
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/robust-disturbance.mp4" data-label="Physical disturbance recovery">
                 <div class="media-placeholder"><span class="media-index">10</span><div><strong>Disturbance</strong><span>Push, trip, recover</span></div></div>
               </div>
               <h3>Physical disturbance</h3>
-              <p>Push and trip recovery within the tracking policy itself.</p>
+              <p>The tracking policy recovers after a kick-induced fall.</p>
             </article>
             <article class="media-item">
               <div class="media-frame" data-video="assets/videos/robust-unsafe-commands.mp4" data-label="Unsafe command filtering comparison">
@@ -299,7 +295,7 @@
           <div class="section-heading split-heading">
             <div>
               <p class="eyebrow">Motion range</p>
-              <h2>High-difficulty motion</h2>
+              <h2>Agile motion teleoperation</h2>
             </div>
             <p>One command interface across flexibility, control, and explosive dynamics.</p>
           </div>
@@ -384,10 +380,16 @@
                 <tr><th scope="row">SceneBot</th><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="no">&#10005;</td></tr>
                 <tr><th scope="row">CMP</th><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="no">&#10005;</td></tr>
                 <tr><th scope="row">BFM-Zero</th><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="yes">&#10003;</td></tr>
+                <tr><th scope="row">Perceptive BFM</th><td class="yes">&#10003;</td><td class="no">&#10005;<sup>&Dagger;</sup></td><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="yes">&#10003;</td></tr>
+                <tr><th scope="row">PGMT</th><td class="yes">&#10003;</td><td class="no">&#10005;<sup>&dagger;</sup></td><td class="yes">&#10003;</td><td class="no">&#10005;</td><td class="no">&#10005;</td><td class="yes">&#10003;</td></tr>
                 <tr class="ours"><th scope="row">GigaBrain-WBC-0.5</th><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td></tr>
               </tbody>
             </table>
           </div>
+          <p class="table-note">
+            <sup>&dagger;</sup>PGMT postdates GigaBrain-WBC-0.5's public release; its demo shows over 1 s of teleoperation delay, exceeding our low-latency criterion.
+            <sup>&Dagger;</sup>Perceptive BFM's 21-frame future window implies at least 0.4 s of look-ahead delay at 50 Hz.
+          </p>
         </div>
       </section>
 
@@ -401,7 +403,7 @@
             <p>Best values are highlighted. All results are sim-to-sim in MuJoCo.</p>
           </div>
           <div class="result-callouts" aria-label="Result highlights">
-            <div><strong>4.3&times;</strong><span>terrain success over the best evaluated baseline</span></div>
+            <div><strong>4.3&times;</strong><span>terrain-interaction success over the best evaluated baseline</span></div>
             <div><strong>83.1%</strong><span>survival under physically implausible commands</span></div>
             <div><strong>99.3%</strong><span>recovery from fallen initializations</span></div>
           </div>
@@ -466,8 +468,7 @@
             <p class="eyebrow">Data pipeline</p>
             <h2>From motion to spatial terrain</h2>
             <p>
-              Contact evidence in retargeted motion is recovered as full 3D, simulator-ready
-              geometry: stairs, seats, boxes, tables, and other supports.
+              We automatically generate 3D support geometry from retargeted trajectories, utilizing the large scale of existing motion-capture corpora.
             </p>
           </div>
           <figure class="paper-figure">
@@ -501,7 +502,7 @@
           </div>
           <pre><code>@article{cheng2026gigabrainwbc,
   title   = {GigaBrain-WBC-0.5: A Behavior World Model for Robust
-             Whole-Body Control with Environment Interaction},
+             Humanoid Whole-Body Tracking with Environment Interaction},
   author  = {Cheng, Ziyang and Tang, Tianshu and Lan, Jinxin and Chen, Xinze and Gong, Yuhan and Liu, Zhichao and Wu, Changzhong and Mao, Yahao and Deng, Zongyan and Ma, Mingxuan and Xi, Huasen and Liu, Yilong and Wu, Yutong and Wang, Xiaofeng and Zhang, Borui and Yu, Bingyao and Wang, Yang and Ye, Yun and Huang, Guan and Jin, Xiaojie and Zhu, Zheng and Lu, Jiwen},
   journal = {arXiv preprint arXiv:2608.18234},
   year    = {2026}
@@ -514,7 +515,6 @@
       <div class="section-shell footer-inner">
         <div class="footer-meta">
           <span>GigaBrain-WBC-0.5</span>
-          <a class="footer-contact" href="mailto:zycheng1226@gmail.com">Contact us: zycheng1226@gmail.com</a>
         </div>
         <img src="assets/images/ivg-logo2-cropped.webp" width="1680" height="260" loading="lazy" decoding="async" alt="Tsinghua University i-Vision Group and GigaAI">
       </div>
