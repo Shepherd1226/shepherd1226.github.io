@@ -18,7 +18,7 @@ const translations = {
       "Before that, I completed my undergraduate studies at Tsinghua University (2022–2026), earning bachelor's degrees in Mathematics and Physics &amp; Mechanical Engineering.",
     bioUiuc:
       'In 2025, I worked as a research intern at the <a href="https://illinois.edu/" target="_blank" rel="noopener">University of Illinois Urbana-Champaign (UIUC)</a> with <a href="https://yxw.web.illinois.edu/" target="_blank" rel="noopener">Prof. Yuxiong Wang</a>.',
-    researchIntro: "I work on robotics and machine learning. My <strong>current research focuses on</strong>:",
+    researchIntro: 'I work on robotics and machine learning. My <strong>current <span class="squirrel-text-perch" data-squirrel-perch="research">research</span> focuses on</strong>:',
     researchOne:
       "<strong>Whole-Body Control for Legged Robots</strong>, studying coordinated whole-body behaviors for loco-manipulation.",
     researchTwo:
@@ -107,7 +107,7 @@ const translations = {
       "本科就读于清华大学（2022—2026），获数理基础科学与机械工程双学士学位。",
     bioUiuc:
       '2025 年，曾赴<a href="https://illinois.edu/" target="_blank" rel="noopener">伊利诺伊大学厄巴纳-香槟分校（UIUC）</a>开展暑期研究，与<a href="https://yxw.web.illinois.edu/" target="_blank" rel="noopener">王宇雄教授</a>合作。',
-    researchIntro: "我的研究聚焦于机器人学习与人形机器人控制，主要包括：",
+    researchIntro: '我的<span class="squirrel-text-perch" data-squirrel-perch="research">研究</span>聚焦于机器人学习与人形机器人控制，主要包括：',
     researchOne: "<strong>足式机器人全身控制</strong>：面向移动操作任务，研究全身协调策略与控制方法。",
     researchTwo: "<strong>人形机器人遥操作</strong>：探索自然、直观的遥操作方式，将操作者的意图准确转化为机器人动作。",
     researchThree: "<strong>机器人安全与鲁棒性</strong>：兼顾物理与语义层面的安全，提高机器人在复杂环境中的鲁棒性。",

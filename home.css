@@ -373,6 +373,90 @@ h1 {
   font-weight: 500;
 }
 
+.news-celebration {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-inline-start: 3px;
+  vertical-align: -3px;
+  color: var(--accent);
+}
+
+.heading-icon {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-inline-start: 0.12em;
+  vertical-align: -0.04em;
+  color: var(--accent);
+}
+
+.squirrel-mascot,
+.pinecone-mascot {
+  position: absolute;
+  pointer-events: none;
+  visibility: hidden;
+  user-select: none;
+  opacity: 0;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  touch-action: manipulation;
+  line-height: 1;
+  transform-origin: center bottom;
+}
+
+.mascot-visual {
+  display: block;
+  transform-origin: center bottom;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.mascot-visual svg {
+  display: block;
+}
+
+.squirrel-mascot:is(:hover, :focus-visible) .mascot-visual,
+.pinecone-mascot:is(:hover, :focus-visible) .mascot-visual {
+  transform: translateY(-2px) scale(1.12);
+  filter: brightness(1.15) drop-shadow(0 0 3px rgba(233, 148, 177, 0.65));
+}
+
+.squirrel-mascot:active .mascot-visual,
+.pinecone-mascot:active .mascot-visual {
+  transform: scale(0.85);
+}
+
+.squirrel-mascot:focus-visible,
+.pinecone-mascot:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.squirrel-text-perch {
+  display: inline-block;
+}
+
+.squirrel-mascot {
+  z-index: 10;
+  width: 28px;
+  height: 28px;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 28px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.pinecone-mascot {
+  z-index: 9;
+  width: 22px;
+  height: 22px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
 .publications-band {
   padding: 58px 0 64px;
   background: var(--soft);
@@ -528,7 +612,8 @@ h1 {
   margin-bottom: 28px;
 }
 
-.awards-heading .eyebrow {
+.awards-heading .eyebrow,
+.awards-heading .heading-icon {
   color: var(--dark-accent);
 }
 
@@ -892,6 +977,16 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .motion-ready .motion-reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .squirrel-mascot:is(:hover, :focus-visible, :active) .mascot-visual,
+  .pinecone-mascot:is(:hover, :focus-visible, :active) .mascot-visual {
+    transform: none;
   }
 
   *,

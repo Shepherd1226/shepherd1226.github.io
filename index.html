@@ -78,6 +78,8 @@
     <link rel="stylesheet" href="home.css">
     <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
     <script src="home.js" defer></script>
+    <script src="assets/vendor/anime-3.2.1.min.js" defer></script>
+    <script src="squirrel.js" defer></script>
     <!-- Umami Analytics -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="55924cf6-b27a-4d31-bd56-b4c29e3b97ac"></script>
   </head>
@@ -134,7 +136,7 @@
               </p>
             </div>
             <div class="research-summary">
-              <p data-i18n-html="researchIntro">I work on robotics and machine learning. My <strong>current research focuses on</strong>:</p>
+              <p data-i18n-html="researchIntro">I work on robotics and machine learning. My <strong>current <span class="squirrel-text-perch" data-squirrel-perch="research">research</span> focuses on</strong>:</p>
               <ol>
                 <li data-i18n-html="researchOne">
                   <strong>Whole-Body Control for Legged Robots</strong>, studying coordinated whole-body behaviors for loco-manipulation.
@@ -162,7 +164,7 @@
               </a>
             </div>
           </div>
-          <figure class="profile-photo">
+          <figure class="profile-photo" data-squirrel-perch>
             <img
               src="assets/images/profile-2026.webp"
               width="1066"
@@ -178,7 +180,13 @@
         <div class="shell news-inner">
           <div class="news-heading">
             <p class="eyebrow" data-i18n="newsEyebrow">Updates</p>
-            <h2 id="news-title" data-i18n="newsTitle">News</h2>
+            <h2 id="news-title">
+              <span data-i18n="newsTitle">News</span>
+              <svg class="heading-icon" data-squirrel-perch xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M4 21h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14a2 2 0 0 1-4 0V9h4M10 7h8m-8 8h8m-8 2h8" />
+                <rect x="10" y="10" width="8" height="2" rx="0.5" />
+              </svg>
+            </h2>
           </div>
           <ul class="news-list">
             <li>
@@ -189,9 +197,15 @@
             </li>
             <li>
               <time datetime="2026-09-05" data-i18n="corlNewsDate">Sep 5, 2026</time>
-              <p data-i18n-html="corlNewsItem">
-                <a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> and
-                <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> were accepted to CoRL 2026.
+              <p>
+                <span data-i18n-html="corlNewsItem">
+                  <a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> and
+                  <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> were accepted to CoRL 2026.
+                </span>
+                <svg class="news-celebration" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M5.8 11.3 2 22l10.7-3.79M4 3h.01M22 8h.01M15 2h.01M22 20h.01M22 2l-2.24.75a2.9 2.9 0 0 0-1.96 3.1c.1.86-.57 1.6-1.44 1.6H16M22 13l-.82-.33c-.86-.34-1.82.2-1.98 1.11-.16.97-1.23 1.5-2.1 1.06L16 14M11 2l.33.82c.34.86-.2 1.82-1.11 1.98-.97.16-1.5 1.23-1.06 2.1L10 8" />
+                  <path d="M11 13c1.93 1.93 2.83 4.17 2 5s-3.07-.07-5-2-2.83-4.17-2-5 3.07.07 5 2Z" />
+                </svg>
               </p>
             </li>
             <li>
@@ -209,7 +223,12 @@
         <div class="shell">
           <div class="section-heading">
             <p class="eyebrow" data-i18n="publicationsEyebrow">Selected work</p>
-            <h2 id="publications-title" data-i18n="publicationsTitle">Publications</h2>
+            <h2 id="publications-title">
+              <span data-i18n="publicationsTitle">Publications</span>
+              <svg class="heading-icon" data-squirrel-perch xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M12 7v14m0-14a4 4 0 0 0-4-4H2v16h6a4 4 0 0 1 4 2 4 4 0 0 1 4-2h6V3h-6a4 4 0 0 0-4 4Z" />
+              </svg>
+            </h2>
           </div>
 
           <div class="publication-list">
@@ -386,13 +405,18 @@
           <div class="awards-heading">
             <div>
               <p class="eyebrow" data-i18n="awardsEyebrow">Recognition</p>
-              <h2 id="awards-title" data-i18n="awardsTitle">Grants, Honors &amp; Awards</h2>
+              <h2 id="awards-title">
+                <span data-i18n="awardsTitle">Grants, Honors &amp; Awards</span>
+                <svg class="heading-icon" data-squirrel-perch xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M8 3h8v6a4 4 0 0 1-8 0V3ZM8 5H5a1 1 0 0 0-1 1v1a4 4 0 0 0 4 4m8-6h3a1 1 0 0 1 1 1v1a4 4 0 0 1-4 4M12 13v4m-4 4v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M6 21h12" />
+                </svg>
+              </h2>
             </div>
           </div>
 
           <div class="awards-columns">
             <div class="awards-group">
-              <h3 data-i18n="honorsPrograms">Honors &amp; Grants</h3>
+              <h3><span class="squirrel-text-perch" data-squirrel-perch data-i18n="honorsPrograms">Honors &amp; Grants</span></h3>
               <ol class="award-list">
                 <li><span class="award-year">2024</span><strong data-i18n="awardNational">National Scholarship, China</strong></li>
                 <li><span class="award-year">2025</span><strong data-i18n="awardQiyan">Undergraduate Qiyan Research Program, Beijing Natural Science Foundation</strong></li>
@@ -403,7 +427,7 @@
             </div>
 
             <div class="awards-group">
-              <h3 data-i18n="competitionAwards">Competitions</h3>
+              <h3><span class="squirrel-text-perch" data-squirrel-perch data-i18n="competitionAwards">Competitions</span></h3>
               <ol class="award-list">
                 <li><span class="award-level" data-i18n="firstPrize">First Prize</span><strong data-i18n="awardPhysics">39th National Undergraduate Physics Competition</strong></li>
                 <li><span class="award-level" data-i18n="firstPrize">First Prize</span><strong data-i18n="awardSrt">2024 Student Research Training Program Outstanding Project</strong></li>
@@ -412,7 +436,7 @@
             </div>
           </div>
           <div class="academic-service">
-            <h3 data-i18n="academicServiceLabel">Academic Service</h3>
+            <h3><span class="squirrel-text-perch" data-squirrel-perch data-i18n="academicServiceLabel">Academic Service</span></h3>
             <p data-i18n="academicServiceText">Invited reviewer for IEEE T-ASE; conference reviewer for CoRL.</p>
           </div>
         </div>
@@ -421,8 +445,14 @@
       <section class="contact shell" id="contact" aria-labelledby="contact-title">
         <p class="eyebrow" data-i18n="contactEyebrow">Get in touch</p>
         <div class="contact-row">
-          <h2 id="contact-title" data-i18n="contactTitle">Let's talk about robots!</h2>
-          <a class="contact-link" href="mailto:zycheng1226@gmail.com">
+          <h2 id="contact-title">
+            <span data-i18n="contactTitle">Let's talk about robots!</span>
+            <svg class="heading-icon" data-squirrel-perch xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <rect x="4" y="7" width="16" height="14" rx="3" />
+              <path d="M12 7V3H9M1 12v5m22-5v5M9 12v1m6-1v1m-6 4h6" />
+            </svg>
+          </h2>
+          <a class="contact-link" data-squirrel-perch href="mailto:zycheng1226@gmail.com">
             <span>zycheng1226@gmail.com</span>
             <i data-lucide="arrow-up-right" aria-hidden="true"></i>
           </a>

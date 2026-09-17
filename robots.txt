@@ -1,4 +1,8 @@
+# Let crawlers read the Album page's noindex directive; block its raw content.
 User-agent: *
+Disallow: /Album/content/
+Disallow: /Album/data.js
+Disallow: /Album/version.js
 Allow: /
 
 Sitemap: https://shepherd1226.github.io/sitemap.xml
