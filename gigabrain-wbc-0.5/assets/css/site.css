@@ -131,10 +131,10 @@ a {
 }
 
 .hero h1 {
-  max-width: 1020px;
+  max-width: 1180px;
   margin: 0 auto;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 46px;
+  font-size: clamp(32px, 3.4vw, 42px);
   font-weight: 500;
   line-height: 1.12;
   letter-spacing: 0;
@@ -693,6 +693,10 @@ pre {
 }
 
 @media (max-width: 860px) {
+  .title-break {
+    display: none;
+  }
+
   .hero {
     padding-top: 58px;
   }

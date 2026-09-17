@@ -31,12 +31,15 @@ const translations = {
     profileAlt: "Ziyang Cheng at Tsinghua University",
     newsEyebrow: "Updates",
     newsTitle: "News",
+    gigaUpdateDate: "Sep 17, 2026",
+    gigaUpdateItem:
+      'Updated the <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a> technical report.',
     corlNewsDate: "Sep 5, 2026",
     corlNewsItem:
       '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> and <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> were accepted to CoRL 2026.',
     newsDate: "Aug 20, 2026",
     newsItem:
-      'Released the technical report for <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5: A Behavior World Model for Robust Whole-Body Control with Environment Interaction</a>.',
+      'Released the technical report for <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5: A Behavior World Model for Robust Humanoid Whole-Body Tracking with Environment Interaction</a>.',
     publicationsEyebrow: "Selected work",
     publicationsTitle: "Publications",
     paperOneAria: "Open the GigaBrain-WBC-0.5 paper",
@@ -81,7 +84,7 @@ const translations = {
     academicServiceText: "Invited reviewer for IEEE T-ASE; conference reviewer for CoRL.",
     contactEyebrow: "Get in touch",
     contactTitle: "Let's talk about robots!",
-    lastUpdated: "Last updated: Sep 12, 2026",
+    lastUpdated: "Last updated: Sep 17, 2026",
     switchLabel: "Switch to Chinese",
     switchText: "中文",
   },
@@ -114,12 +117,15 @@ const translations = {
     profileAlt: "程子扬的个人照片",
     newsEyebrow: "近期动态",
     newsTitle: "动态",
+    gigaUpdateDate: "2026 年 9 月 17 日",
+    gigaUpdateItem:
+      '<a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a> 技术报告已更新。',
     corlNewsDate: "2026 年 9 月 5 日",
     corlNewsItem:
       '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> 与 <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> 被 CoRL 2026 录用。',
     newsDate: "2026 年 8 月 20 日",
     newsItem:
-      '技术报告 <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5: A Behavior World Model for Robust Whole-Body Control with Environment Interaction</a> 已发布。',
+      '技术报告 <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5: A Behavior World Model for Robust Humanoid Whole-Body Tracking with Environment Interaction</a> 已发布。',
     publicationsEyebrow: "代表作",
     publicationsTitle: "论文",
     paperOneAria: "查看 GigaBrain-WBC-0.5 论文",
@@ -164,7 +170,7 @@ const translations = {
     academicServiceText: "IEEE T-ASE 受邀审稿人；CoRL 会议审稿人。",
     contactEyebrow: "联系方式",
     contactTitle: "欢迎与我聊机器人！",
-    lastUpdated: "更新于 2026 年 9 月 12 日",
+    lastUpdated: "更新于 2026 年 9 月 17 日",
     switchLabel: "切换为英文",
     switchText: "EN",
   },
