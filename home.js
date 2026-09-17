@@ -33,13 +33,13 @@ const translations = {
     newsTitle: "News",
     gigaUpdateDate: "Sep 17, 2026",
     gigaUpdateItem:
-      'Updated the <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a> technical report.',
+      'Major update to <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a>, including new ablation studies.',
     corlNewsDate: "Sep 5, 2026",
     corlNewsItem:
       '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> and <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> were accepted to CoRL 2026.',
     newsDate: "Aug 20, 2026",
     newsItem:
-      'Released the technical report for <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5: A Behavior World Model for Robust Humanoid Whole-Body Tracking with Environment Interaction</a>.',
+      'Released the technical report for <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a>.',
     publicationsEyebrow: "Selected work",
     publicationsTitle: "Publications",
     paperOneAria: "Open the GigaBrain-WBC-0.5 paper",
@@ -119,13 +119,13 @@ const translations = {
     newsTitle: "动态",
     gigaUpdateDate: "2026 年 9 月 17 日",
     gigaUpdateItem:
-      '<a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a> 技术报告已更新。',
+      '<a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a> 迎来重大更新，新增消融实验等内容。',
     corlNewsDate: "2026 年 9 月 5 日",
     corlNewsItem:
       '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> 与 <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> 被 CoRL 2026 录用。',
     newsDate: "2026 年 8 月 20 日",
     newsItem:
-      '技术报告 <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5: A Behavior World Model for Robust Humanoid Whole-Body Tracking with Environment Interaction</a> 已发布。',
+      '技术报告 <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a> 已发布。',
     publicationsEyebrow: "代表作",
     publicationsTitle: "论文",
     paperOneAria: "查看 GigaBrain-WBC-0.5 论文",
