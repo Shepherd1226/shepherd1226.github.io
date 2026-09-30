@@ -102,7 +102,7 @@ const translations = {
     pageName: "程子扬",
     role: "清华大学自动化系电子信息专业直博生",
     bioCurrent:
-      '现为清华大学<a href="https://www.au.tsinghua.edu.cn/en/" target="_blank" rel="noopener">自动化系</a>一年级直博生，师从<a href="https://scholar.google.com/citations?user=TN8uDQoAAAAJ&amp;hl=en" target="_blank" rel="noopener">鲁继文教授</a>。',
+      '现为<a href="https://www.au.tsinghua.edu.cn/en/" target="_blank" rel="noopener">清华大学自动化系</a>一年级直博生，师从<a href="https://scholar.google.com/citations?user=TN8uDQoAAAAJ&amp;hl=en" target="_blank" rel="noopener">鲁继文教授</a>。',
     bioPrevious:
       "本科就读于清华大学（2022—2026），获数理基础科学与机械工程双学士学位。",
     bioUiuc:
