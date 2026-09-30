@@ -13,7 +13,7 @@ const translations = {
     pageName: "Ziyang Cheng",
     role: "Ph.D. Student in Electronic Information at Tsinghua University",
     bioCurrent:
-      'I am a first-year Ph.D. student in the <a href="https://www.au.tsinghua.edu.cn/" target="_blank" rel="noopener">Department of Automation</a> at Tsinghua University, advised by <a href="https://scholar.google.com/citations?user=TN8uDQoAAAAJ&amp;hl=en" target="_blank" rel="noopener">Prof. Jiwen Lu</a>.',
+      'I am a first-year Ph.D. student in the <a href="https://www.au.tsinghua.edu.cn/en/" target="_blank" rel="noopener">Department of Automation at Tsinghua University</a>, advised by <a href="https://scholar.google.com/citations?user=TN8uDQoAAAAJ&amp;hl=en" target="_blank" rel="noopener">Prof. Jiwen Lu</a>.',
     bioPrevious:
       "Before that, I completed my undergraduate studies at Tsinghua University (2022–2026), earning bachelor's degrees in Mathematics and Physics &amp; Mechanical Engineering.",
     bioUiuc:
@@ -36,7 +36,7 @@ const translations = {
       'Major update to <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a>, including new ablation studies.',
     corlNewsDate: "Sep 5, 2026",
     corlNewsItem:
-      '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> and <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> were accepted to CoRL 2026.',
+      '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> and <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> were accepted to CoRL 2026, with CMP selected for <strong>Spotlight</strong>.',
     newsDate: "Aug 20, 2026",
     newsItem:
       'Released the technical report for <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a>.',
@@ -102,7 +102,7 @@ const translations = {
     pageName: "程子扬",
     role: "清华大学自动化系电子信息专业直博生",
     bioCurrent:
-      '现为清华大学<a href="https://www.au.tsinghua.edu.cn/" target="_blank" rel="noopener">自动化系</a>一年级直博生，师从<a href="https://scholar.google.com/citations?user=TN8uDQoAAAAJ&amp;hl=en" target="_blank" rel="noopener">鲁继文教授</a>。',
+      '现为清华大学<a href="https://www.au.tsinghua.edu.cn/en/" target="_blank" rel="noopener">自动化系</a>一年级直博生，师从<a href="https://scholar.google.com/citations?user=TN8uDQoAAAAJ&amp;hl=en" target="_blank" rel="noopener">鲁继文教授</a>。',
     bioPrevious:
       "本科就读于清华大学（2022—2026），获数理基础科学与机械工程双学士学位。",
     bioUiuc:
@@ -122,7 +122,7 @@ const translations = {
       '<a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a> 迎来重大更新，新增消融实验等内容。',
     corlNewsDate: "2026 年 9 月 5 日",
     corlNewsItem:
-      '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> 与 <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> 被 CoRL 2026 录用。',
+      '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> 与 <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> 被 CoRL 2026 录用，其中 CMP 入选 <strong>Spotlight</strong>。',
     newsDate: "2026 年 8 月 20 日",
     newsItem:
       '技术报告 <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a> 已发布。',
