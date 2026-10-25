@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -171,7 +171,9 @@
             <p>
                 A core advantage of CMP is its ability to handle infeasible, out-of-distribution commands gracefully without crashing, instead of failing catastrophically like standard models.
             </p>
-            <img src="Static/real_experiment_1.webp" alt="Robustness to OOD Commands" class="img-fluid">
+            <div class="figure-scroll">
+                <img src="Static/real_experiment_1.webp" alt="Robustness to OOD Commands" class="img-fluid">
+            </div>
             <p class="caption">
                 <strong>Visual comparison of hardware trials.</strong> The color bars denote the outcome: green for task success, blue for safe survival ("best-effort" execution despite lower accuracy), and red for catastrophic failure. While the baseline (UMI-on-Legs) succeeds in In-Distribution (ID) tasks, it suffers severe failures in OOD scenarios. In contrast, CMP safely handles arbitrary commands by generalizing to moderate OOD tasks and surviving extreme ones gracefully.
             </p>

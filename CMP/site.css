@@ -252,6 +252,44 @@
   max-width: 620px;
 }
 
+/* The hardware-trial figure is much wider than the reading column: on narrow
+   screens it scrolls inside its own frame instead of shrinking to illegibility. */
+.figure-scroll {
+  margin: 4px 0 16px;
+  overflow-x: auto;
+  border: 0.5px solid var(--hairline);
+  border-radius: var(--radius-m);
+  background: #fff;
+  box-shadow: var(--shadow-media);
+  scrollbar-color: var(--separator-strong) transparent;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.figure-scroll .img-fluid {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media (max-width: 900px) {
+  .figure-scroll .img-fluid {
+    width: 900px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .figure-scroll {
+    border-radius: 14px;
+  }
+
+  .figure-scroll .img-fluid {
+    width: 820px;
+  }
+}
+
 .caption {
   margin: 0 0 22px;
   padding: 0;
