@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f2f5fa">
     <meta name="description" content="Competence Manifold Projection (CMP) enables robust whole-body tracking for legged loco-manipulation under out-of-distribution commands.">
     <title>CMP: Robust Whole-Body Tracking for Loco-Manipulation via Competence Manifold Projection</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="canonical" href="https://shepherd1226.github.io/CMP/">
     <meta property="og:type" content="article">
     <meta property="og:title" content="CMP: Robust Whole-Body Tracking for Loco-Manipulation via Competence Manifold Projection">
@@ -71,350 +72,9 @@
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
     </script>
 
-    <style>
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            color: #333333;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-        .container main > header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            border-bottom: 1px solid rgba(229, 231, 235, 0.92);
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(14px);
-        }
-        .header-inner {
-            width: min(calc(100% - 40px), 1200px);
-            min-height: 58px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 28px;
-        }
-        .wordmark {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: #1f2937;
-            font-size: 14px;
-            font-weight: 700;
-            text-decoration: none;
-        }
-        .wordmark-mark {
-            width: 28px;
-            height: 28px;
-            display: grid;
-            place-items: center;
-            color: #fff;
-            background: #1f2937;
-            border-radius: 4px;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 17px;
-        }
-        .site-nav {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-        .site-nav a {
-            color: #6b7280;
-            font-size: 13px;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        .site-nav a:hover,
-        .site-nav a:focus-visible {
-            color: #2563eb;
-        }
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: #1f2937;
-            margin-bottom: 24px;
-            line-height: 1.2;
-        }
-        .authors {
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-        }
-        .container main > header .acceptance-note {
-            display: inline-flex;
-            align-items: center;
-            margin: -6px 0 24px;
-            padding: 7px 20px;
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            color: #78350f;
-            border-radius: 9999px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            letter-spacing: 0.01em;
-            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
-        }
-        .authors a {
-            color: #2563eb;
-            text-decoration: none;
-            cursor: pointer;
-            font-weight: 500;
-        }
-        .authors sup,
-        .affiliations sup {
-            font-size: 0.8rem;
-            color: #6b7280;
-        }
-        .authors a:hover {
-            text-decoration: underline;
-        }
-        .affiliations {
-            font-size: 1.15rem;
-            color: #4b5563;
-            margin-bottom: 30px;
-        }
-        .links {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        .link-btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 10px 24px;
-            background-color: #1f2937;
-            color: white;
-            text-decoration: none;
-            border-radius: 9999px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.2s ease;
-        }
-        .link-btn:hover {
-            background-color: #374151;
-            transform: translateY(-1px);
-        }
-        .link-btn svg {
-            margin-right: 8px;
-            fill: currentColor;
-            width: 20px;
-            height: 20px;
-        }
-        .contact-note {
-            margin: -18px 0 40px;
-            color: #6b7280;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-        .contact-note a {
-            color: #4b5563;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        .contact-note a:hover,
-        .contact-note a:focus-visible {
-            color: #2563eb;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-        .site-footer {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 60px;
-            padding-top: 20px;
-            color: #6b7280;
-            font-size: 0.9rem;
-            border-top: 1px solid #e5e7eb;
-        }
-        .site-footer a {
-            color: #4b5563;
-            text-decoration: none;
-        }
-        .site-footer a:hover,
-        .site-footer a:focus-visible {
-            color: #2563eb;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-        section {
-            margin-bottom: 80px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .section-wide {
-            max-width: 100%;
-        }
-        h2 {
-            font-size: 2rem;
-            color: #111827;
-            margin-top: 0;
-            margin-bottom: 24px;
-            text-align: center;
-            font-weight: 700;
-        }
-        p {
-            font-size: 1.125rem;
-            text-align: justify;
-            line-height: 1.7;
-            color: #4b5563;
-            margin-bottom: 20px;
-        }
-        .video-container {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
-            background: #f3f4f6;
-        }
-        video {
-            width: 100%;
-            display: block;
-        }
-        .img-fluid {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        .img-fluid-small {
-            width: 80%;
-            height: auto;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        .caption {
-            font-size: 1rem;
-            color: #6b7280;
-            text-align: justify;
-            line-height: 1.6;
-            margin-top: 10px;
-            margin-bottom: 30px;
-            padding: 0 10px;
-        }
-        .table-container {
-            overflow-x: auto;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95rem;
-            background-color: white;
-            overflow: hidden;
-        }
-        th, td {
-            padding: 16px 12px;
-            text-align: center;
-            border-bottom: 1px solid #e5e7eb;
-            white-space: nowrap;
-        }
-        th {
-            background-color: #f9fafb;
-            color: #374151;
-            font-weight: 600;
-        }
-        tr:last-child td {
-            border-bottom: none;
-        }
-        .method-col {
-            text-align: left;
-            font-weight: 600;
-            color: #111827;
-        }
-        .table-subheader {
-            font-size: 0.85rem;
-            color: #6b7280;
-            font-weight: 500;
-            background-color: #f9fafb;
-        }
-        .bibtex-code {
-            background-color: #f8fafc;
-            color: #334155;
-            padding: 24px;
-            border-radius: 12px;
-            overflow-x: auto;
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            font-size: 0.95rem;
-            border: 1px solid #e2e8f0;
-            display: block;
-            margin: 0;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        
-        .teaser-video-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 60px;
-        }
-        .teaser-video-container video {
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .grid-2col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        @media (max-width: 768px) {
-            .grid-2col {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 620px) {
-            .header-inner {
-                width: min(calc(100% - 30px), 1200px);
-                min-height: 54px;
-            }
-            .wordmark {
-                font-size: 12px;
-            }
-            .wordmark-mark {
-                width: 26px;
-                height: 26px;
-            }
-            .site-nav {
-                gap: 14px;
-            }
-            .site-nav a {
-                font-size: 11px;
-            }
-        }
-        @media (max-width: 420px) {
-            .site-nav a:first-child {
-                display: none;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../project-ios.css">
+    <link rel="stylesheet" href="site.css">
+    <script src="../project-ios.js" defer></script>
 
     <!-- Umami Analytics -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="55924cf6-b27a-4d31-bd56-b4c29e3b97ac"></script>
@@ -467,7 +127,7 @@
         </header>
 
         <div class="teaser-video-container">
-            <video controls autoplay loop muted playsinline style="max-width: 900px; width: 100%;">
+            <video controls autoplay loop muted playsinline>
                 <source src="Static/web_optimized.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -487,10 +147,10 @@
             </p>
         </section>
 
-        <section id="pipeline" style="max-width: 1050px;">
+        <section id="pipeline">
             <h2>Method Overview</h2>
-            <img src="Static/pipeline.webp" alt="Overview of the pipeline" class="img-fluid" style="width: 100%; height: auto; margin: 0 auto; display: block;">
-            <p class="caption" style="text-align: center;">
+            <img src="Static/pipeline.webp" alt="Overview of the pipeline" class="img-fluid">
+            <p class="caption">
                 <strong>Pipeline of Competence Manifold Projection.</strong> Target trajectories relative to the current Tool Center Point (TCP) frame are encoded into a raw latent intention $z_t^{raw}$ by an Intent Encoder $\phi$ for execution by the Low-level Policy $\pi$. A Safety Estimator $\omega$ is concurrently trained via Temporal Difference (TD) targets to assess safety. To streamline inference, the Isomorphic Latent Space (ILS) aligns safety contours to be spherical, with safety decreasing radially. This permits $\mathcal{O}(1)$ safety enforcement by simply truncating latent vectors that exceed the safety radius.
             </p>
         </section>
@@ -500,8 +160,8 @@
             <p>
                 The primary challenge of imposing safety on dynamic legged systems is the dependence on infinite-horizon future states. CMP simplifies this into a unified projection step.
             </p>
-            <img src="Static/method_progression.webp" alt="Evolution of the safety formulation" class="img-fluid" style="max-width: 600px; margin: 0 auto; display: block;">
-            <p class="caption" style="text-align: center;">
+            <img src="Static/method_progression.webp" alt="Evolution of the safety formulation" class="img-fluid">
+            <p class="caption">
                 <strong>(a)</strong> The original safety problem depends on future horizons. <strong>(b)</strong> We reduce it to a single-step latent inclusion check. <strong>(c)</strong> Utilizing ILS, we enforce an isomorphism between safety probability and geometric radius, creating a spherical boundary for easy $\mathcal{O}(1)$ projection.
             </p>
         </section>
@@ -519,51 +179,51 @@
                 <table>
                     <thead>
                         <tr>
-                            <th rowspan="2" class="method-col" style="border-right: 1px solid #e2e8f0; vertical-align: bottom;">Method</th>
-                            <th colspan="3" style="border-right: 1px solid #e2e8f0;">ID (5 tasks &times; 3 trials)</th>
-                            <th colspan="3" style="border-right: 1px solid #e2e8f0;">Moderate OOD (5 tasks &times; 3 trials)</th>
-                            <th colspan="3" style="border-right: 1px solid #e2e8f0;">Extreme OOD (5 tasks &times; 3 trials)</th>
-                            <th rowspan="2" class="table-subheader" style="vertical-align: bottom;">Latency (ms) &darr;</th>
+                            <th rowspan="2" class="method-col">Method</th>
+                            <th colspan="3">ID (5 tasks &times; 3 trials)</th>
+                            <th colspan="3">Moderate OOD (5 tasks &times; 3 trials)</th>
+                            <th colspan="3">Extreme OOD (5 tasks &times; 3 trials)</th>
+                            <th rowspan="2" class="table-subheader">Latency (ms) &darr;</th>
                         </tr>
                         <tr>
                             <th class="table-subheader">SR (%) &uarr;</th>
                             <th class="table-subheader">$e_p$ (cm) &darr;</th>
-                            <th class="table-subheader" style="border-right: 1px solid #e2e8f0;">$e_r$ (rad) &darr;</th>
+                            <th class="table-subheader">$e_r$ (rad) &darr;</th>
                             <th class="table-subheader">SR (%) &uarr;</th>
                             <th class="table-subheader">$e_p$ (cm) &darr;</th>
-                            <th class="table-subheader" style="border-right: 1px solid #e2e8f0;">$e_r$ (rad) &darr;</th>
+                            <th class="table-subheader">$e_r$ (rad) &darr;</th>
                             <th class="table-subheader">SR (%) &uarr;</th>
                             <th class="table-subheader">$e_p$ (cm) &darr;</th>
-                            <th class="table-subheader" style="border-right: 1px solid #e2e8f0;">$e_r$ (rad) &darr;</th>
+                            <th class="table-subheader">$e_r$ (rad) &darr;</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="method-col" style="border-right: 1px solid #e2e8f0;">UMI-on-Legs</td>
-                            <td>80.0</td><td><strong>4.9 &plusmn; 1.6</strong></td><td style="border-right: 1px solid #e2e8f0;"><strong>0.07 &plusmn; 0.02</strong></td>
-                            <td>0.0</td><td>-</td><td style="border-right: 1px solid #e2e8f0;">-</td>
-                            <td>0.0</td><td>-</td><td style="border-right: 1px solid #e2e8f0;">-</td>
+                            <td class="method-col">UMI-on-Legs</td>
+                            <td>80.0</td><td><strong>4.9 &plusmn; 1.6</strong></td><td><strong>0.07 &plusmn; 0.02</strong></td>
+                            <td>0.0</td><td>-</td><td>-</td>
+                            <td>0.0</td><td>-</td><td>-</td>
                             <td><strong>2.97 &plusmn; 0.15</strong></td>
                         </tr>
                         <tr>
-                            <td class="method-col" style="border-right: 1px solid #e2e8f0;">Latent Shielding</td>
-                            <td>73.3</td><td>6.9 &plusmn; 4.3</td><td style="border-right: 1px solid #e2e8f0;">0.09 &plusmn; 0.03</td>
-                            <td>33.3</td><td><strong>7.8 &plusmn; 6.6</strong></td><td style="border-right: 1px solid #e2e8f0;"><strong>0.16 &plusmn; 0.11</strong></td>
-                            <td>20.0</td><td>-</td><td style="border-right: 1px solid #e2e8f0;">-</td>
+                            <td class="method-col">Latent Shielding</td>
+                            <td>73.3</td><td>6.9 &plusmn; 4.3</td><td>0.09 &plusmn; 0.03</td>
+                            <td>33.3</td><td><strong>7.8 &plusmn; 6.6</strong></td><td><strong>0.16 &plusmn; 0.11</strong></td>
+                            <td>20.0</td><td>-</td><td>-</td>
                             <td>3.89 &plusmn; 0.49</td>
                         </tr>
                         <tr>
-                            <td class="method-col" style="border-right: 1px solid #e2e8f0;">Neural CBF</td>
-                            <td>80.0</td><td><strong>4.8 &plusmn; 1.9</strong></td><td style="border-right: 1px solid #e2e8f0;">0.09 &plusmn; 0.03</td>
-                            <td>60.0</td><td><strong>7.0 &plusmn; 4.3</strong></td><td style="border-right: 1px solid #e2e8f0;"><strong>0.17 &plusmn; 0.11</strong></td>
-                            <td>40.0</td><td><strong>19.3 &plusmn; 11.9</strong></td><td style="border-right: 1px solid #e2e8f0;"><strong>0.24 &plusmn; 0.27</strong></td>
+                            <td class="method-col">Neural CBF</td>
+                            <td>80.0</td><td><strong>4.8 &plusmn; 1.9</strong></td><td>0.09 &plusmn; 0.03</td>
+                            <td>60.0</td><td><strong>7.0 &plusmn; 4.3</strong></td><td><strong>0.17 &plusmn; 0.11</strong></td>
+                            <td>40.0</td><td><strong>19.3 &plusmn; 11.9</strong></td><td><strong>0.24 &plusmn; 0.27</strong></td>
                             <td>5.36 &plusmn; 0.54</td>
                         </tr>
-                        <tr style="background-color: #f1f8ff;">
-                            <td class="method-col" style="border-right: 1px solid #e2e8f0;"><strong>CMP (Ours)</strong></td>
-                            <td><strong>100.0</strong></td><td><strong>5.1 &plusmn; 1.8</strong></td><td style="border-right: 1px solid #e2e8f0;">0.09 &plusmn; 0.03</td>
-                            <td><strong>93.3</strong></td><td><strong>9.6 &plusmn; 7.2</strong></td><td style="border-right: 1px solid #e2e8f0;"><strong>0.24 &plusmn; 0.10</strong></td>
-                            <td><strong>86.7</strong></td><td><strong>19.2 &plusmn; 11.1</strong></td><td style="border-right: 1px solid #e2e8f0;">0.87 &plusmn; 0.68</td>
+                        <tr class="ours">
+                            <td class="method-col"><strong>CMP (Ours)</strong></td>
+                            <td><strong>100.0</strong></td><td><strong>5.1 &plusmn; 1.8</strong></td><td>0.09 &plusmn; 0.03</td>
+                            <td><strong>93.3</strong></td><td><strong>9.6 &plusmn; 7.2</strong></td><td><strong>0.24 &plusmn; 0.10</strong></td>
+                            <td><strong>86.7</strong></td><td><strong>19.2 &plusmn; 11.1</strong></td><td>0.87 &plusmn; 0.68</td>
                             <td><strong>2.99 &plusmn; 0.14</strong></td>
                         </tr>
                     </tbody>
@@ -590,28 +250,28 @@
                 </div>
                 <div>
                     <h3>2. Ablation & Trade-off</h3>
-                    <div class="table-container" style="margin-top: 0; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; border-radius: 8px;">
-                        <table style="font-size: 0.85rem;">
+                    <div class="table-container compact-table">
+                        <table>
                             <thead>
                                 <tr>
-                                    <th style="padding: 8px;">Method</th>
-                                    <th style="padding: 8px;">Frame-Wise</th>
-                                    <th style="padding: 8px;">Estimator</th>
-                                    <th style="padding: 8px;">ILS</th>
+                                    <th>Method</th>
+                                    <th>Frame-Wise</th>
+                                    <th>Estimator</th>
+                                    <th>ILS</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="method-col" style="padding: 8px; font-weight: normal;">UMI-on-Legs</td><td style="padding: 8px;">&times;</td><td style="padding: 8px;">&times;</td><td style="padding: 8px;">&times;</td>
+                                    <td class="method-col">UMI-on-Legs</td><td>&times;</td><td>&times;</td><td>&times;</td>
                                 </tr>
                                 <tr>
-                                    <td class="method-col" style="padding: 8px; font-weight: normal;">CVAE</td><td style="padding: 8px;">&check;</td><td style="padding: 8px;">&times;</td><td style="padding: 8px;">&times;</td>
+                                    <td class="method-col">CVAE</td><td>&check;</td><td>&times;</td><td>&times;</td>
                                 </tr>
                                 <tr>
-                                    <td class="method-col" style="padding: 8px; font-weight: normal;">SCVAE</td><td style="padding: 8px;">&check;</td><td style="padding: 8px;">&check;</td><td style="padding: 8px;">&times;</td>
+                                    <td class="method-col">SCVAE</td><td>&check;</td><td>&check;</td><td>&times;</td>
                                 </tr>
-                                <tr style="background-color: #f1f8ff;">
-                                    <td class="method-col" style="padding: 8px;"><strong>CMP (Ours)</strong></td><td style="padding: 8px;"><strong>&check;</strong></td><td style="padding: 8px;"><strong>&check;</strong></td><td style="padding: 8px;"><strong>&check;</strong></td>
+                                <tr class="ours">
+                                    <td class="method-col"><strong>CMP (Ours)</strong></td><td><strong>&check;</strong></td><td><strong>&check;</strong></td><td><strong>&check;</strong></td>
                                 </tr>
                             </tbody>
                         </table>

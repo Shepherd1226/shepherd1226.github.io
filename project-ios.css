@@ -1,0 +1,641 @@
+/* ==========================================================================
+   Project pages — shared iOS design system
+   --------------------------------------------------------------------------
+   Only the structural language lives here: glass capsule navigation, cards,
+   buttons, tables, code blocks, motion. Every project supplies its own
+   palette, display typeface and accent gradient through the variables below,
+   so the two project pages feel like siblings of the homepage without
+   copying its colours.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Type — pages may swap --display-font (CMP keeps SF, GigaBrain uses serif) */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter",
+    "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Segoe UI", sans-serif;
+  --display-font: var(--font-sans);
+  --font-mono: "SF Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* Neutral labels — pages may warm or cool these */
+  --label: #1d1d1f;
+  --label-secondary: #3c3c43;
+  --label-tertiary: #6c6c70;
+  --label-quaternary: #6e6e73;
+
+  /* Surfaces override per project */
+  --page-bg: #f2f2f7;
+  --page-card: #ffffff;
+  --page-card-soft: #ffffff;
+  --page-fill: rgba(118, 118, 128, 0.12);
+  --page-fill-strong: rgba(118, 118, 128, 0.2);
+  --separator: rgba(60, 60, 67, 0.14);
+  --separator-strong: rgba(60, 60, 67, 0.24);
+  --hairline: rgba(60, 60, 67, 0.08);
+
+  /* Accent override per project */
+  --accent: #0071e3;
+  --accent-press: #0062c4;
+  --accent-soft: rgba(0, 113, 227, 0.1);
+  --accent-soft-strong: rgba(0, 113, 227, 0.18);
+  --link: #0066cc;
+  --eyebrow-color: var(--accent);
+  --project-gradient: linear-gradient(145deg, #0a84ff 0%, #5e5ce6 52%, #bf5af2 100%);
+  --wash-a: rgba(0, 113, 227, 0.13);
+  --wash-b: rgba(255, 55, 95, 0.09);
+  --wash-c: rgba(191, 90, 242, 0.08);
+
+  /* Header glass tint override per project */
+  --header-glass-top: rgba(255, 255, 255, 0.6);
+  --header-glass-bottom: rgba(255, 255, 255, 0.26);
+  --header-border: rgba(255, 255, 255, 0.72);
+
+  /* Layout */
+  --page-width: 1080px;
+  --header-height: 58px;
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --radius-xl: 30px;
+  --radius-pill: 980px;
+
+  /* Depth */
+  --shadow-card: 0 1px 2px rgba(29, 29, 31, 0.03), 0 18px 42px -28px rgba(29, 29, 31, 0.25);
+  --shadow-card-hover: 0 2px 4px rgba(29, 29, 31, 0.04), 0 28px 56px -30px rgba(29, 29, 31, 0.32);
+  --shadow-media: 0 1px 2px rgba(29, 29, 31, 0.04), 0 16px 36px -22px rgba(29, 29, 31, 0.28);
+
+  /* Motion */
+  --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out-apple: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 34px);
+  background: var(--page-bg);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-color: var(--separator-strong) transparent;
+  scrollbar-width: thin;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: transparent;
+  color: var(--label);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Soft page-wide tint; each project overrides the three wash colours. */
+body::before {
+  position: fixed;
+  z-index: 0;
+  inset: 0 0 auto;
+  height: min(95vh, 920px);
+  background:
+    radial-gradient(56% 50% at 10% 0%, var(--wash-a), transparent 68%),
+    radial-gradient(46% 42% at 88% 4%, var(--wash-b), transparent 68%),
+    radial-gradient(44% 42% at 54% 26%, var(--wash-c), transparent 70%);
+  content: "";
+  pointer-events: none;
+}
+
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+img.is-missing {
+  display: none;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+:where(a, button):focus-visible {
+  border-radius: 6px;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--display-font);
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+sup {
+  font-size: 0.72em;
+  line-height: 0;
+  vertical-align: super;
+}
+
+::selection {
+  background: var(--accent-soft-strong);
+}
+
+.container,
+.section-shell {
+  width: min(calc(100% - 48px), var(--page-width));
+  margin-inline: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Floating frosted-glass capsule header
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  z-index: 40;
+  top: 12px;
+  width: min(calc(100% - 32px), 1120px);
+  height: var(--header-height);
+  margin: 12px auto 0;
+  padding: 0 8px;
+  border: 0.5px solid var(--header-border);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, var(--header-glass-top) 0%, var(--header-glass-bottom) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1px 0 rgba(60, 60, 67, 0.04),
+    0 1px 2px rgba(29, 29, 31, 0.04),
+    0 16px 38px -24px rgba(29, 29, 31, 0.3);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  backdrop-filter: blur(30px) saturate(190%);
+  transition:
+    border-color 0.35s var(--ease-ios),
+    box-shadow 0.35s var(--ease-ios);
+}
+
+.site-header::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0) 38%,
+    rgba(255, 255, 255, 0) 66%,
+    rgba(255, 255, 255, 0.24) 100%
+  );
+  content: "";
+  pointer-events: none;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header {
+    background: var(--page-card);
+  }
+}
+
+.site-header.is-scrolled {
+  border-color: rgba(255, 255, 255, 0.88);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    inset 0 -1px 0 rgba(60, 60, 67, 0.05),
+    0 1px 2px rgba(29, 29, 31, 0.05),
+    0 20px 44px -26px rgba(29, 29, 31, 0.4);
+}
+
+.header-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 6px;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--label);
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.wordmark:hover {
+  color: var(--label);
+  opacity: 0.8;
+}
+
+.wordmark-mark {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  place-items: center;
+  border-radius: 9px;
+  background: var(--project-gradient);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.16),
+    0 6px 14px -8px rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-family: var(--display-font);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.site-nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 12px;
+  background: var(--nav-fill, rgba(118, 118, 128, 0.12));
+  box-shadow: inset 0 0 0 0.5px var(--hairline);
+}
+
+.site-nav a {
+  display: inline-flex;
+  height: 30px;
+  align-items: center;
+  padding: 0 13px;
+  border-radius: 9px;
+  color: var(--label-secondary);
+  font-size: 12.5px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color 0.2s ease,
+    background-color 0.3s var(--ease-ios),
+    box-shadow 0.3s var(--ease-ios);
+}
+
+.site-nav a:hover {
+  color: var(--label);
+}
+
+@media (hover: hover) {
+  .site-nav a:not(.is-active):hover {
+    background: rgba(255, 255, 255, 0.38);
+  }
+}
+
+.site-nav a.is-active {
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow:
+    0 1px 3px rgba(29, 29, 31, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 0 0 0.5px rgba(29, 29, 31, 0.05);
+  color: var(--label);
+  font-weight: 600;
+}
+
+.site-nav a:active {
+  transform: scale(0.96);
+}
+
+/* --------------------------------------------------------------------------
+   Capsule buttons (Paper / Code / project links)
+   -------------------------------------------------------------------------- */
+
+.link-btn,
+.resource-link {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 0.35s var(--ease-spring),
+    background-color 0.2s ease,
+    box-shadow 0.3s var(--ease-ios);
+}
+
+.links .link-btn:first-child,
+.resource-links .resource-link:first-child {
+  background: var(--accent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 16px 30px -16px rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+.links .link-btn:not(:first-child),
+.resource-links .resource-link:not(:first-child) {
+  border: 0.5px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.52);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 1px 2px rgba(29, 29, 31, 0.04),
+    0 12px 26px -22px rgba(29, 29, 31, 0.4);
+  color: var(--label);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+}
+
+@media (hover: hover) {
+  .links .link-btn:first-child:hover,
+  .resource-links .resource-link:first-child:hover {
+    background: var(--accent-press);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .links .link-btn:not(:first-child):hover,
+  .resource-links .resource-link:not(:first-child):hover {
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--label);
+    transform: translateY(-1px);
+  }
+}
+
+.link-btn:active,
+.resource-link:active {
+  transform: scale(0.97);
+}
+
+.link-btn svg,
+.resource-link svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+.link-btn small,
+.resource-link small {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.links .link-btn:not(:first-child) small,
+.resource-links .resource-link:not(:first-child) small {
+  color: var(--label-tertiary);
+}
+
+/* --------------------------------------------------------------------------
+   Shared content defaults
+   -------------------------------------------------------------------------- */
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--eyebrow-color);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.table-note {
+  margin: 12px 0 0;
+  color: var(--label-quaternary);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* Tables */
+.table-scroll,
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 0.5px solid var(--separator);
+  border-radius: var(--radius-m);
+  background: var(--page-card);
+  scrollbar-color: var(--separator-strong) transparent;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--label-secondary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+th,
+td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--separator);
+  text-align: center;
+  white-space: nowrap;
+}
+
+thead th {
+  background: var(--page-fill);
+  color: var(--label-secondary);
+  font-size: 10.5px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  white-space: normal;
+}
+
+tbody th {
+  color: var(--label);
+  font-weight: 600;
+  text-align: left;
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Code */
+pre {
+  margin: 0;
+  padding: 20px 22px;
+  overflow-x: auto;
+  border: 0.5px solid var(--separator);
+  border-radius: var(--radius-m);
+  background: var(--page-fill);
+  color: var(--label-secondary);
+  font: 13px/1.65 var(--font-mono);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Footer shell */
+.site-footer {
+  border-top: 1px solid var(--separator);
+  color: var(--label-quaternary);
+  font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+   Scroll reveal (toggled by project-ios.js)
+   -------------------------------------------------------------------------- */
+
+.motion-ready .reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+}
+
+.motion-ready .reveal.is-inview {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.75s var(--ease-out-apple),
+    transform 0.95s var(--ease-out-apple);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive shell
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  :root {
+    --page-width: 100%;
+  }
+
+  .container,
+  .section-shell {
+    width: min(calc(100% - 56px), 100%);
+  }
+
+  .site-nav a {
+    padding: 0 11px;
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    font-size: 16px;
+  }
+
+  .container,
+  .section-shell {
+    width: calc(100% - 36px);
+  }
+
+  .site-header {
+    top: 10px;
+    width: calc(100% - 24px);
+    margin-top: 10px;
+    padding: 0 6px;
+  }
+
+  :root {
+    --header-height: 54px;
+  }
+
+  .header-inner {
+    gap: 10px;
+    padding: 0 4px;
+  }
+
+  .wordmark {
+    gap: 0;
+    font-size: 13px;
+  }
+
+  .wordmark > span:last-child {
+    display: none;
+  }
+
+  .wordmark-mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    font-size: 13px;
+  }
+
+  .site-nav {
+    padding: 2px;
+    border-radius: 11px;
+  }
+
+  .site-nav a {
+    height: 28px;
+    padding: 0 9px;
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-nav a:first-child {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced motion
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .motion-ready .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

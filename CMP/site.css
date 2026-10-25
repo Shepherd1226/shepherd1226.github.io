@@ -1,0 +1,503 @@
+/* ==========================================================================
+   CMP — project page theme
+   Identity: CMP's green / blue / rose tri-colour, cool paper background,
+   precise SF typography, gold Spotlight badge. Structure comes from
+   project-ios.css; this file carries CMP's own palette and layout.
+   ========================================================================== */
+
+:root {
+  --page-bg: #f2f5fa;
+  --page-card: #ffffff;
+  --page-card-soft: #fbfcff;
+
+  --accent: #3a66c9;
+  --accent-press: #2f55ad;
+  --accent-soft: rgba(58, 102, 201, 0.1);
+  --accent-soft-strong: rgba(58, 102, 201, 0.18);
+  --link: #2f5bc4;
+  --eyebrow-color: #3a66c9;
+
+  --project-gradient: linear-gradient(120deg, #7ed957 0%, #668ff4 52%, #f1416b 100%);
+
+  --wash-a: rgba(126, 217, 87, 0.14);
+  --wash-b: rgba(102, 143, 244, 0.16);
+  --wash-c: rgba(241, 65, 107, 0.09);
+
+  --header-glass-top: rgba(250, 253, 255, 0.64);
+  --header-glass-bottom: rgba(243, 248, 255, 0.28);
+  --header-border: rgba(255, 255, 255, 0.76);
+  --nav-fill: rgba(122, 134, 150, 0.12);
+
+  --label: #16202b;
+  --label-secondary: #3d4854;
+  --label-tertiary: #66707c;
+  --label-quaternary: #767f8a;
+  --separator: rgba(22, 32, 43, 0.13);
+  --separator-strong: rgba(22, 32, 43, 0.23);
+  --hairline: rgba(22, 32, 43, 0.08);
+  --page-fill: rgba(122, 134, 150, 0.11);
+}
+
+/* --------------------------------------------------------------------------
+   Page shell
+   -------------------------------------------------------------------------- */
+
+.container {
+  padding: 0 0 56px;
+}
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+
+.container main > header {
+  padding: 26px 0 34px;
+  text-align: center;
+}
+
+.container main > header h1 {
+  max-width: 1040px;
+  margin: 0 auto 18px;
+  color: var(--label);
+  font-size: clamp(32px, 4.3vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.033em;
+  line-height: 1.1;
+}
+
+.container main > header h1 span {
+  font-weight: 800;
+}
+
+.acceptance-note {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 20px;
+  padding: 8px 18px;
+  border: 0.5px solid rgba(255, 255, 255, 0.65);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, #ffe6a6 0%, #ffc45e 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 8px 20px -10px rgba(199, 137, 32, 0.55);
+  color: #684400;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.authors {
+  max-width: 980px;
+  margin: 0 auto 10px;
+  color: var(--label-secondary);
+  font-size: 15px;
+  line-height: 1.95;
+}
+
+.authors a {
+  color: var(--link);
+  font-weight: 500;
+}
+
+.authors a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.authors sup,
+.affiliations sup {
+  color: var(--label-tertiary);
+  font-size: 0.7em;
+}
+
+.affiliations {
+  margin: 0 0 24px;
+  color: var(--label-tertiary);
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.link-btn svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.contact-note {
+  margin: 0 0 8px;
+  color: var(--label-quaternary);
+  font-size: 13px;
+}
+
+.contact-note a {
+  color: var(--label-secondary);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Teaser video
+   -------------------------------------------------------------------------- */
+
+.teaser-video-container {
+  margin: 0 0 24px;
+  padding: 10px;
+  border-radius: calc(var(--radius-l) + 10px);
+  background: var(--page-card);
+  box-shadow: var(--shadow-card);
+}
+
+.teaser-video-container video {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-l);
+  background: #000;
+}
+
+/* --------------------------------------------------------------------------
+   Content cards
+   -------------------------------------------------------------------------- */
+
+.container main > section {
+  max-width: none;
+  margin: 0 0 22px;
+  padding: clamp(24px, 3.8vw, 42px);
+  border-radius: var(--radius-xl);
+  background: var(--page-card);
+  box-shadow: var(--shadow-card);
+}
+
+.section-wide {
+  max-width: none;
+}
+
+.container main > section > h2 {
+  margin-bottom: 20px;
+  color: var(--label);
+  font-size: clamp(25px, 3.1vw, 33px);
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 1.15;
+}
+
+/* Small tri-colour rule above every section title: CMP's brand signature. */
+.container main > section > h2::before {
+  display: block;
+  width: 44px;
+  height: 4px;
+  margin-bottom: 14px;
+  border-radius: 2px;
+  background: var(--project-gradient);
+  content: "";
+}
+
+.container main p {
+  color: var(--label-secondary);
+  font-size: 17px;
+  line-height: 1.68;
+  text-align: left;
+}
+
+.container main p:last-child {
+  margin-bottom: 0;
+}
+
+.container main h3 {
+  margin: 0 0 12px;
+  color: var(--label);
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+}
+
+.container main strong {
+  color: var(--label);
+  font-weight: 650;
+}
+
+.container main em {
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Figures and captions
+   -------------------------------------------------------------------------- */
+
+.img-fluid,
+.img-fluid-small {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 4px auto 16px;
+  border: 0.5px solid var(--hairline);
+  border-radius: var(--radius-m);
+  background: #fff;
+  box-shadow: var(--shadow-media);
+}
+
+.img-fluid-small {
+  width: 80%;
+}
+
+#method-progression .img-fluid {
+  max-width: 620px;
+}
+
+.caption {
+  margin: 0 0 22px;
+  padding: 0;
+  color: var(--label-tertiary);
+  font-size: 13.5px;
+  line-height: 1.65;
+  text-align: left;
+}
+
+.caption:last-child {
+  margin-bottom: 0;
+}
+
+.caption strong {
+  color: var(--label-secondary);
+  font-weight: 650;
+}
+
+/* --------------------------------------------------------------------------
+   Tables
+   -------------------------------------------------------------------------- */
+
+.table-container {
+  margin: 20px 0 22px;
+  border: 0.5px solid var(--separator);
+  background: var(--page-card-soft);
+}
+
+.table-container table {
+  min-width: 900px;
+}
+
+.table-container strong {
+  color: var(--accent);
+}
+
+.method-col {
+  color: var(--label);
+  font-weight: 650;
+  text-align: left;
+}
+
+.table-subheader {
+  color: var(--label-tertiary);
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.container main tr.ours th,
+.container main tr.ours td {
+  background: var(--accent-soft);
+  color: var(--label);
+}
+
+.container main tr.ours .method-col {
+  color: var(--accent);
+}
+
+/* Compact ablation table inside the analysis grid */
+.compact-table {
+  min-width: 0 !important;
+  margin: 0 0 16px;
+  border-radius: 14px;
+}
+
+.compact-table table {
+  min-width: 0;
+  font-size: 12px;
+}
+
+.compact-table th,
+.compact-table td {
+  padding: 9px 10px;
+}
+
+.compact-table .method-col {
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   Analysis grid
+   -------------------------------------------------------------------------- */
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  margin-bottom: 26px;
+}
+
+.grid-2col:last-child {
+  margin-bottom: 0;
+}
+
+.grid-2col > div {
+  min-width: 0;
+}
+
+.grid-2col .table-container {
+  margin: 0 0 16px;
+  border-radius: 14px;
+}
+
+.grid-2col .caption {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   BibTeX
+   -------------------------------------------------------------------------- */
+
+.bibtex-code {
+  padding: 22px 24px;
+  border: 0.5px solid var(--separator);
+  border-radius: var(--radius-m);
+  background: var(--page-fill);
+  color: var(--label-secondary);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .grid-2col {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .table-container table {
+    min-width: 820px;
+  }
+
+  .compact-table table {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .container {
+    width: calc(100% - 28px);
+    padding-bottom: 40px;
+  }
+
+  .container main > header {
+    padding: 18px 0 26px;
+  }
+
+  .container main > header h1 {
+    font-size: clamp(28px, 7.4vw, 38px);
+    letter-spacing: -0.028em;
+  }
+
+  .acceptance-note {
+    margin-bottom: 16px;
+    padding: 7px 15px;
+    font-size: 12px;
+  }
+
+  .authors {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .affiliations {
+    font-size: 12.5px;
+  }
+
+  .teaser-video-container {
+    padding: 7px;
+    border-radius: 26px;
+  }
+
+  .teaser-video-container video {
+    border-radius: 20px;
+  }
+
+  .container main > section {
+    padding: 22px 18px;
+    border-radius: var(--radius-l);
+    margin-bottom: 16px;
+  }
+
+  .container main > section > h2 {
+    font-size: 23px;
+  }
+
+  .container main > section > h2::before {
+    width: 36px;
+    height: 3px;
+    margin-bottom: 12px;
+  }
+
+  .container main p {
+    font-size: 15.5px;
+    line-height: 1.62;
+  }
+
+  .container main h3 {
+    font-size: 17.5px;
+  }
+
+  .caption {
+    font-size: 12.5px;
+    margin-bottom: 18px;
+  }
+
+  .img-fluid,
+  .img-fluid-small {
+    width: 100%;
+    border-radius: 14px;
+  }
+
+  .table-container table {
+    min-width: 760px;
+    font-size: 12px;
+  }
+
+  th,
+  td {
+    padding: 10px 11px;
+  }
+
+  .bibtex-code {
+    padding: 18px;
+    font-size: 11.5px;
+  }
+
+  .link-btn {
+    min-height: 40px;
+    padding: 0 17px;
+    font-size: 13.5px;
+  }
+}
+
+@media (max-width: 420px) {
+  .links {
+    gap: 8px;
+  }
+
+  .container main > header h1 {
+    font-size: 26px;
+  }
+}
