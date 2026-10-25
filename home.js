@@ -85,6 +85,7 @@ const translations = {
     contactEyebrow: "Get in touch",
     contactTitle: "Let's talk about robots!",
     lastUpdated: "Last updated: Sep 17, 2026",
+    awardsScrollLabel: "Awards lists. Use the mouse wheel or the arrow keys to scroll.",
     switchLabel: "Switch to Chinese",
     switchText: "中文",
   },
@@ -171,6 +172,7 @@ const translations = {
     contactEyebrow: "联系方式",
     contactTitle: "欢迎与我聊机器人！",
     lastUpdated: "更新于 2026 年 9 月 17 日",
+    awardsScrollLabel: "荣誉列表：可使用鼠标滚轮或方向键滚动。",
     switchLabel: "切换为英文",
     switchText: "EN",
   },
@@ -206,6 +208,10 @@ const applyLanguage = (language) => {
   languageToggle.querySelector("span").textContent = copy.switchText;
   languageToggle.setAttribute("aria-label", copy.switchLabel);
   languageToggle.title = copy.switchLabel;
+
+  document.querySelectorAll(".award-marquee").forEach((marquee) => {
+    marquee.setAttribute("aria-label", copy.awardsScrollLabel);
+  });
 };
 
 languageToggle.addEventListener("click", () => {
@@ -240,6 +246,199 @@ applyLanguage(currentLanguage);
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+/* --------------------------------------------------------------------------
+   Awards marquees - JS-driven so they can be wheel / keyboard scrolled
+   -------------------------------------------------------------------------- */
+
+const SCROLL_HINT_SVG =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>';
+
+const setupAwardMarquee = (marquee, duration) => {
+  const track = marquee.querySelector(".award-marquee-track");
+  const list = marquee.querySelector(".award-list:not(.is-clone)");
+  if (!track || !list) return;
+
+  let listHeight = 0;
+  let offset = 0;
+  let momentum = 0;
+  let frameId = 0;
+  let lastTime = 0;
+  let hovered = false;
+  let focused = false;
+  let visible = false;
+
+  const render = () => {
+    track.style.transform = listHeight > 0 ? `translate3d(0, ${(-offset).toFixed(2)}px, 0)` : "";
+  };
+
+  const wrap = () => {
+    if (listHeight > 0) {
+      offset = ((offset % listHeight) + listHeight) % listHeight;
+    }
+  };
+
+  const measure = () => {
+    listHeight = list.getBoundingClientRect().height;
+    if (reducedMotion.matches) return;
+    wrap();
+    render();
+  };
+
+  const frame = (time) => {
+    frameId = 0;
+    if (!visible || reducedMotion.matches) return;
+    if (!listHeight) measure();
+
+    const delta = lastTime ? Math.min(0.05, (time - lastTime) / 1000) : 0.016;
+    lastTime = time;
+
+    // Auto-flow pauses while the list is hovered or focused, so the reader can
+    // take over with the wheel or the arrow keys.
+    if (!hovered && !focused) {
+      offset += (listHeight / duration) * delta;
+    }
+
+    if (Math.abs(momentum) > 0.3) {
+      const step = momentum * Math.min(1, delta * 14);
+      offset += step;
+      momentum -= step;
+    } else {
+      momentum = 0;
+    }
+
+    wrap();
+    render();
+    frameId = window.requestAnimationFrame(frame);
+  };
+
+  const start = () => {
+    if (frameId || reducedMotion.matches || !visible) return;
+    lastTime = 0;
+    frameId = window.requestAnimationFrame(frame);
+  };
+
+  const stop = () => {
+    if (frameId) window.cancelAnimationFrame(frameId);
+    frameId = 0;
+    lastTime = 0;
+  };
+
+  const syncPlayback = () => {
+    marquee.tabIndex = reducedMotion.matches ? -1 : 0;
+    if (reducedMotion.matches) {
+      stop();
+      momentum = 0;
+      offset = 0;
+      track.style.transform = "";
+      return;
+    }
+    measure();
+    if (visible) start();
+  };
+
+  marquee.tabIndex = 0;
+  marquee.setAttribute("role", "group");
+  marquee.setAttribute("aria-label", translations[currentLanguage].awardsScrollLabel);
+
+  marquee.addEventListener("pointerenter", () => {
+    hovered = true;
+  });
+  marquee.addEventListener("pointerleave", () => {
+    hovered = false;
+  });
+  marquee.addEventListener("focusin", () => {
+    focused = true;
+  });
+  marquee.addEventListener("focusout", (event) => {
+    focused = marquee.contains(event.relatedTarget);
+  });
+
+  marquee.addEventListener(
+    "wheel",
+    (event) => {
+      if (reducedMotion.matches || !listHeight) return;
+      if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
+      const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1;
+      const delta = event.deltaY * unit;
+      if (!delta) return;
+      event.preventDefault();
+      momentum += delta;
+      hovered = true;
+    },
+    { passive: false },
+  );
+
+  marquee.addEventListener("keydown", (event) => {
+    if (reducedMotion.matches) return;
+    const step =
+      event.key === "ArrowDown"
+        ? 48
+        : event.key === "ArrowUp"
+          ? -48
+          : event.key === "PageDown"
+            ? 200
+            : event.key === "PageUp"
+              ? -200
+              : 0;
+    if (!step) return;
+    event.preventDefault();
+    momentum += step;
+  });
+
+  reducedMotion.addEventListener("change", syncPlayback);
+
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(measure).observe(list);
+  }
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          visible = entry.isIntersecting;
+          syncPlayback();
+        });
+      },
+      { rootMargin: "120px 0px" },
+    ).observe(marquee);
+  } else {
+    visible = true;
+    syncPlayback();
+  }
+
+  measure();
+};
+
+const initAwardMarquees = () => {
+  document.querySelectorAll(".award-list").forEach((list, index) => {
+    const marquee = document.createElement("div");
+    const track = document.createElement("div");
+    marquee.className = "award-marquee";
+    track.className = "award-marquee-track";
+    list.before(marquee);
+    marquee.append(track);
+    track.append(list);
+
+    for (let cloneIndex = 0; cloneIndex < 2; cloneIndex += 1) {
+      const clone = list.cloneNode(true);
+      clone.classList.add("is-clone");
+      clone.setAttribute("aria-hidden", "true");
+      track.append(clone);
+    }
+
+    const group = marquee.closest(".awards-group");
+    if (group && !group.querySelector(".award-scroll-hint")) {
+      const hint = document.createElement("span");
+      hint.className = "award-scroll-hint";
+      hint.setAttribute("aria-hidden", "true");
+      hint.innerHTML = SCROLL_HINT_SVG;
+      group.append(hint);
+    }
+
+    setupAwardMarquee(marquee, index === 1 ? 29 : 36);
+  });
+};
+
 if (!reducedMotion.matches) {
   const pageSections = [...document.querySelectorAll("main > section")];
   document.documentElement.classList.add("motion-ready");
@@ -272,22 +471,7 @@ if (!reducedMotion.matches) {
     pageSections.forEach((section) => section.classList.add("is-in-view"));
   }
 
-  document.querySelectorAll(".award-list").forEach((list) => {
-    const marquee = document.createElement("div");
-    const track = document.createElement("div");
-    marquee.className = "award-marquee";
-    track.className = "award-marquee-track";
-    list.before(marquee);
-    marquee.append(track);
-    track.append(list);
-
-    for (let index = 0; index < 2; index += 1) {
-      const clone = list.cloneNode(true);
-      clone.classList.add("is-clone");
-      clone.setAttribute("aria-hidden", "true");
-      track.append(clone);
-    }
-  });
+  initAwardMarquees();
 }
 
 if (window.lucide) {
