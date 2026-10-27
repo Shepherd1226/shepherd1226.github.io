@@ -36,7 +36,7 @@ const translations = {
       'Major update to <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a>, including new ablation studies.',
     corlNewsDate: "Sep 5, 2026",
     corlNewsItem:
-      '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> and <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> were accepted to CoRL 2026, with CMP selected for <strong>Spotlight</strong>.',
+      '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> and <a href="https://why-peace.github.io/F2F-AP/" target="_blank" rel="noopener">F2F-AP</a> were accepted to CoRL 2026, with CMP selected for <strong>Spotlight</strong>.',
     newsDate: "Aug 20, 2026",
     newsItem:
       'Released the technical report for <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a>.',
@@ -84,7 +84,7 @@ const translations = {
     academicServiceText: "Invited reviewer for IEEE T-ASE; conference reviewer for CoRL.",
     contactEyebrow: "Get in touch",
     contactTitle: "Let's talk about robots!",
-    lastUpdated: "Last updated: Sep 17, 2026",
+    lastUpdated: "Last updated: Oct 28, 2026",
     awardsScrollLabel: "Awards lists. Use the mouse wheel or the arrow keys to scroll.",
     switchLabel: "Switch to Chinese",
     switchText: "中文",
@@ -123,7 +123,7 @@ const translations = {
       '<a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a> 迎来重大更新，新增消融实验等内容。',
     corlNewsDate: "2026 年 9 月 5 日",
     corlNewsItem:
-      '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> 与 <a href="https://f2f-ap.github.io/" target="_blank" rel="noopener">F2F-AP</a> 被 CoRL 2026 录用，其中 CMP 入选 <strong>Spotlight</strong>。',
+      '<a href="https://shepherd1226.github.io/CMP/" target="_blank" rel="noopener">CMP</a> 与 <a href="https://why-peace.github.io/F2F-AP/" target="_blank" rel="noopener">F2F-AP</a> 被 CoRL 2026 录用，其中 CMP 入选 <strong>Spotlight</strong>。',
     newsDate: "2026 年 8 月 20 日",
     newsItem:
       '技术报告 <a href="https://shepherd1226.github.io/gigabrain-wbc-0.5/" target="_blank" rel="noopener">GigaBrain-WBC-0.5</a> 已发布。',
@@ -171,7 +171,7 @@ const translations = {
     academicServiceText: "IEEE T-ASE 受邀审稿人；CoRL 会议审稿人。",
     contactEyebrow: "联系方式",
     contactTitle: "欢迎与我聊机器人！",
-    lastUpdated: "更新于 2026 年 9 月 17 日",
+    lastUpdated: "更新于 2026 年 10 月 28 日",
     awardsScrollLabel: "荣誉列表：可使用鼠标滚轮或方向键滚动。",
     switchLabel: "切换为英文",
     switchText: "EN",
