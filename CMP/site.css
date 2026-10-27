@@ -143,6 +143,51 @@
   font-weight: 600;
 }
 
+/* The follow-up-work link borrows the Paper button's filled accent treatment so
+   it reads as a primary action next to the paper's own resources. */
+.links .link-btn.link-btn-accent {
+  background: var(--accent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 16px 30px -16px rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+@media (hover: hover) {
+  .links .link-btn.link-btn-accent:hover {
+    background: var(--accent-press);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+}
+
+/* Pointer to the follow-up work, sitting under the Paper / Code / next-work row. */
+.container main p.next-work-note {
+  margin: 0;
+  color: var(--label-tertiary);
+  font-size: 13.5px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.next-work-note .next-work-tag {
+  margin-right: 7px;
+  color: var(--eyebrow-color);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.next-work-note a.next-work-tag:hover {
+  color: var(--accent-press);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* --------------------------------------------------------------------------
    Teaser video
    -------------------------------------------------------------------------- */
